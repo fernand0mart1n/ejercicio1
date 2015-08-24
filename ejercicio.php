@@ -8,7 +8,11 @@
 	<link href="lib/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="well">
+<div class="container">
+ <div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
 	<H3>Ingrese sus datos:</H3>
 	<form method="post">
 	Nombre(s):<br>
@@ -45,6 +49,10 @@
 	<input type="button" value="Volver">
 	<input type="submit" value="Enviar">
 	</form>
+  </div>
+  <div class="col-md-2">
+  </div>
+ </div>
 </div>
 </body>
 </html>
