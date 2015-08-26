@@ -1,3 +1,9 @@
+<?php
+
+require('datos.php');
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +21,16 @@
   <div class="col-md-8">
 	<H3>Ingrese sus datos:</H3>
 	<form method="post">
-	Apellido(s):<br>
-	<input type="text" name="apellido">
+	Apellido(s): 
+	<input type="text" name="apellido" required>
 	<br><br>
-	Nombre(s):<br>
-	<input type="text" name="nombre">
+	Nombre(s): 
+	<input type="text" name="nombre" required>
 	<br><br>
+	Sexo: <br>
 	<input type="radio" name="sex" value="male"> Masculino<br>
 	<input type="radio" name="sex" value="female"> Femenino<br><br>
-	Tipo de documento:<br>
+	Tipo de documento: 
 	<select>
 		<option value="dni">Elija una opción</option>
 		<option value="dni">DNI</option>
@@ -31,16 +38,16 @@
 		<option value="le">LE</option>
 	</select>
 	<br><br>
-	Número de documento:<br>
-	<input type="text" name="documento">
+	Número de documento: 
+	<input type="text" name="documento" required>
 	<br><br>
-	Fecha de expedición:<br>
+	Fecha de expedición: 
+	<input type="date" name="fecha" required>
+	<br><br>
+	Fecha de vencimiento: 
 	<input type="date" name="fecha">
 	<br><br>
-	Fecha de vencimiento:<br>
-	<input type="date" name="fecha">
-	<br><br>
-	Nacionalidad:<br>
+	Nacionalidad: 
 	<select>
 		<option value="argentina">Argentina</option>
 		<option value="bolivia">Bolivia</option>
@@ -52,9 +59,9 @@
 		<option value="venezuela">Venezuela</option>
 	</select><br><br>
 	Domicilio:<br>
-	<input type="text" name="domicilio">
+	<input type="text" name="domicilio" required>
 	<br><br>
-	Fecha y lugar de nacimiento:<br>
+	Fecha y lugar de nacimiento: 
 	<select>
 		<option value="dia">Día</option>
 	</select>
@@ -65,8 +72,13 @@
 		<option value="año">Año</option>
 	</select>
 	<select>
-		<option value="provincia">Provincia</option>
+		<?php foreach ($provincias as $provincia){?>
+			<option value="<?php echo $provincia;?>"><?php echo $provincia;?></option>
+		<?php endforeach;?>
 	</select><br><br>
+	Subir foto:
+	<input type="file" value="Subir" name="foto">
+	<br>
 	<input type="button" value="Volver">
 	<input type="submit" value="Enviar">
 	<hr>
