@@ -25,13 +25,13 @@ require('datos.php');
 	<H3>Ingrese sus datos:</H3>
 	<form method="post">
 	Apellido(s): 
-	<input type="text" title="error" name="apellido" placeholder="Ingrese su(s) apellido(s)" required>
+	<input type="text" title="Debe ingresar su(s) nombre(s)" name="apellido" placeholder="Ingrese su(s) apellido(s)" required>
 	<br><br>
 	Nombre(s): 
-	<input type="text" title="error" name="nombre" placeholder="Ingrese su(s) nombre(s)" required>
+	<input type="text" title="Debe ingresar su(s) apellido(s)" name="nombre" placeholder="Ingrese su(s) nombre(s)" required>
 	<br><br>
 	Sexo: <br>
-	<input type="radio" name="sex" id="masc" value="male"> Masculino<br>
+	<input type="radio" name="sex" id="masc" value="male"> Masculino 
 	<input type="radio" name="sex" id="feme" value="female"> Femenino<br><br>
 	Tipo de documento: 
 	<select>
@@ -41,13 +41,13 @@ require('datos.php');
 	</select>
 	<br><br>
 	Número de documento: 
-	<input type="text" title="error" name="documento" placeholder="Ingrese su documento" required>
+	<input type="text" title="Debe ingresar su documento" name="documento" placeholder="Ingrese su documento" required>
 	<br><br>
 	Fecha de expedición: 
-	<input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>" disabled>
+	<input type="date" title="Fecha correspondiente al día de la expedición del documento (hoy)" name="fecha" value="<?php echo date('Y-m-d'); ?>" disabled>
 	<br><br>
 	Fecha de vencimiento: 
-	<input type="date" name="fecha" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
+	<input type="date" title="Fecha correspondiente al día de vencimiento del documento" name="fecha" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
 	<br><br>
 	Nacionalidad: 
 	<select>
@@ -55,8 +55,8 @@ require('datos.php');
 			<option value="<?php echo $pais;?>"><?php echo $pais;?></option>
 		<?php };?>
 	</select><br><br>
-	Domicilio:<br>
-	<input type="text" title="error" name="domicilio" placeholder="Ingrese su domicilio" required>
+	Domicilio: 
+	<input type="text" title="Debe ingresar su domicilio" name="domicilio" placeholder="Ingrese su domicilio" required>
 	<br><br>
 	Fecha y lugar de nacimiento: 
 	<select>
@@ -73,11 +73,14 @@ require('datos.php');
 			<option value="<?php echo $provincia;?>"><?php echo $provincia;?></option>
 		<?php };?>
 	</select><br><br>
+	¿Es donante? <br>
+	<input type="radio" name="don" id="donsi" value="si"> Si 
+	<input type="radio" name="don" id="donno" value="no"> No<br><br>
 	Subir foto:
 	<input type="file" value="subir" name="foto">
 	<br>
-	<input class="btn btn-md btn-danger" type="button" value="Volver">
-	<input class="btn btn-md btn-success" type="submit" value="Enviar">
+	<input class="btn btn-md btn-danger" type="button" value="Volver" onclick="window.location='index.php';">
+	<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick="if(sexook()){window.location='ok.php';}">
 	<hr>
 	</form>
   </div>
