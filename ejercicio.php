@@ -13,6 +13,7 @@ require('datos.php');
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="lib/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/js/validar.js"></script>
 	<link href="lib/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -24,10 +25,10 @@ require('datos.php');
 	<H3>Ingrese sus datos:</H3>
 	<form method="post">
 	Apellido(s): 
-	<input type="text" name="apellido" placeholder="Ingrese su(s) apellido(s)" required>
+	<input type="text" title="error" name="apellido" placeholder="Ingrese su(s) apellido(s)" required>
 	<br><br>
 	Nombre(s): 
-	<input type="text" name="nombre" placeholder="Ingrese su(s) nombre(s)" required>
+	<input type="text" title="error" name="nombre" placeholder="Ingrese su(s) nombre(s)" required>
 	<br><br>
 	Sexo: <br>
 	<input type="radio" name="sex" id="masc" value="male"> Masculino<br>
@@ -40,13 +41,13 @@ require('datos.php');
 	</select>
 	<br><br>
 	Número de documento: 
-	<input type="text" name="documento" placeholder="Ingrese su documento" required>
+	<input type="text" title="error" name="documento" placeholder="Ingrese su documento" required>
 	<br><br>
 	Fecha de expedición: 
-	<input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>">
+	<input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>" disabled>
 	<br><br>
 	Fecha de vencimiento: 
-	<input type="date" name="fecha">
+	<input type="date" name="fecha" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
 	<br><br>
 	Nacionalidad: 
 	<select>
@@ -55,7 +56,7 @@ require('datos.php');
 		<?php };?>
 	</select><br><br>
 	Domicilio:<br>
-	<input type="text" name="domicilio" placeholder="Ingrese su domicilio" required>
+	<input type="text" title="error" name="domicilio" placeholder="Ingrese su domicilio" required>
 	<br><br>
 	Fecha y lugar de nacimiento: 
 	<select>
