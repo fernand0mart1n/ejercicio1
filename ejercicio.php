@@ -56,12 +56,44 @@ require('datos.php');
     </div>
   </div>
     <div class="form-group">
-    <label for="apellido" class="col-lg-2 control-label">Documento</label>
+    <label for="documento" class="col-lg-2 control-label">Documento</label>
     <div class="col-lg-10">
 		<input type="text" class="form-control" title="Debe ingresar su documento" name="documento" id="documento" placeholder="Ingrese su número de documento" required>
     </div>
   </div>
-  
+  <div class="form-group">
+    <label for="fecha_exp" class="col-lg-2 control-label">Fecha expedición</label>
+    <div class="col-lg-10">
+		<input type="date" class="form-control" name="exp" id="exp" value="<?php echo date('Y-m-d'); ?>" disabled>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fecha_ven" class="col-lg-2 control-label">Fecha vencimiento</label>
+    <div class="col-lg-10">
+		<input type="text" class="form-control" name="ven" id="ven" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
+    </div>
+  </div>
+<div class="form-group">
+    <label for="nacionalidad" class="col-lg-2 control-label">Nacionalidad</label>
+    <div class="col-lg-10">
+		<select>
+		<?php foreach ($paises as $pais){?>
+			<option value="<?php echo $pais;?>"><?php echo $pais;?></option>
+		<?php };?>
+	</select>
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="domicilio" class="col-lg-2 control-label">Domicilio</label>
+    <div class="col-lg-10">
+		<input type="text" class="form-control" title="Debe ingresar su domicilio" name="domicilio" id="domicilio" placeholder="Domicilio" required>
+    </div>
+  </div>
+Domicilio: 
+	<input type="text" title="Debe ingresar su domicilio" name="domicilio" placeholder="Ingrese su domicilio" required>
+	<br><br>
+
+  </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <div class="checkbox">
@@ -78,24 +110,9 @@ require('datos.php');
   </div>
 </form>
 	
-	Número de documento: 
-	<input type="text" title="Debe ingresar su documento" name="documento" placeholder="Ingrese su documento" required>
-	<br><br>
-	Fecha de expedición: 
-	<input type="date" title="Fecha correspondiente al día de la expedición del documento (hoy)" name="fecha" value="<?php echo date('Y-m-d'); ?>" disabled>
-	<br><br>
-	Fecha de vencimiento: 
-	<input type="date" title="Fecha correspondiente al día de vencimiento del documento" name="fecha" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
-	<br><br>
-	Nacionalidad: 
-	<select>
-		<?php foreach ($paises as $pais){?>
-			<option value="<?php echo $pais;?>"><?php echo $pais;?></option>
-		<?php };?>
-	</select><br><br>
-	Domicilio: 
-	<input type="text" title="Debe ingresar su domicilio" name="domicilio" placeholder="Ingrese su domicilio" required>
-	<br><br>
+	
+	
+	
 	Fecha y lugar de nacimiento: 
 	<select>
 		<option value="dia">Día</option>
