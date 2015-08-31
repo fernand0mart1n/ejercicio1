@@ -20,7 +20,7 @@ require('datos.php');
   <div class="col-md-1">
   </div>
   <div class="col-lg-12">
-	<H3 align="center">Ingrese sus datos:</H3><br>
+	<H3 align="center">Ingrese sus datos</H3><br>
 	<form class="form-horizontal" method="post" role="form">
 	<div class="form-group">
     <label for="nombre" class="col-lg-3 control-label">Nombre(s)</label>
@@ -96,7 +96,7 @@ require('datos.php');
   </div>
   <div class="form-group">
     <label for="fecha_lugar" class="col-lg-3 control-label">Fecha y lugar de nacimiento:</label>
-    <div class="col-xs-2">
+    <div class="col-lg-2">
 		<select class="form-control">
 		<option value="dia">Día</option>
 	</select>
@@ -162,10 +162,11 @@ require('datos.php');
 	<input class="btn btn-md btn-danger" type="button" value="Volver" onclick="window.location='index.php';">
 	<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick="if(sexook()){window.location='ok.php';}">
   </div>
-  </div>
  </form>
 </div>
+</div>
 <div class="col-md-1">
+</div>
 </div>
 <hr>
 <script type="text/javascript" src="lib/js/jquery-2.1.4.min.js"></script>
