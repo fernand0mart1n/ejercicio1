@@ -119,7 +119,6 @@ require('datos.php');
 	</select>
     </div>
   </div>
-
   <div class="form-group">
     <label class="col-lg-3 control-label">¿Es donante?</label>
     <div class="col-lg-8">

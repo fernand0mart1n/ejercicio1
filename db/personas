@@ -1,0 +1,68 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+DROP SCHEMA IF EXISTS `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`nacionalidades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`nacionalidades` (
+  `id` INT UNSIGNED NOT NULL,
+  `descripcion` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`personas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`personas` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `dni` INT UNSIGNED NOT NULL,
+  `apellido` VARCHAR(80) NOT NULL,
+  `nombre` VARCHAR(80) NOT NULL,
+  `fecha_nacimiento` DATE NOT NULL,
+  `nacionalidad_id` INT UNSIGNED NOT NULL,
+  `domicilio` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `dni_UNIQUE` (`dni` ASC),
+  INDEX `nacionalidad_id_idx` (`nacionalidad_id` ASC),
+  CONSTRAINT `nacionalidad_id`
+    FOREIGN KEY (`nacionalidad_id`)
+    REFERENCES `mydb`.`nacionalidades` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`nacionalidades`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`nacionalidades` (`id`, `descripcion`) VALUES (1, 'ARGENTINO/A');
+INSERT INTO `mydb`.`nacionalidades` (`id`, `descripcion`) VALUES (2, 'PERUANOA');
+INSERT INTO `mydb`.`nacionalidades` (`id`, `descripcion`) VALUES (3, 'CHILENO/A');
+INSERT INTO `mydb`.`nacionalidades` (`id`, `descripcion`) VALUES (4, 'URUGUAYO/A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`personas`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`personas` (`id`, `dni`, `apellido`, `nombre`, `fecha_nacimiento`, `nacionalidad_id`, `domicilio`) VALUES (1, 21412442, 'flores', 'montoto', '1923-03-03', 1, 'siempreviva 123');
+INSERT INTO `mydb`.`personas` (`id`, `dni`, `apellido`, `nombre`, `fecha_nacimiento`, `nacionalidad_id`, `domicilio`) VALUES (2, 24443422, 'perez', 'juan', '1973-04-02', 1, 'chuletas con brocoli 1337');
+INSERT INTO `mydb`.`personas` (`id`, `dni`, `apellido`, `nombre`, `fecha_nacimiento`, `nacionalidad_id`, `domicilio`) VALUES (3, 34123943, 'bangho', 'panchita', '1991-12-10', 3, 'tu calle 23');
+
+COMMIT;
+
