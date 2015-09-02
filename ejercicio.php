@@ -114,7 +114,7 @@ require('datos.php');
 						<div class="col-lg-2">
 							<select class="form-control">
 								<option value="año">Año</option>
-								<?php for($i = 1900; $i < 2016; $i++){?>
+								<?php for($i = 2015; $i > 1900; $i--){?>
 									<option value="<?php echo $i;?>"><?php echo $i;?></option>
 								<?php };?>
 							</select>
