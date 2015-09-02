@@ -154,24 +154,24 @@ require('datos.php');
 		   			<div class="form-group">
 		    			<label for="foto" class="col-lg-3 control-label">Subir foto del documento:</label>
 		    			<div class="col-lg-8">
-							<input type="file" class="file form-control" name="foto" id="foto" required>
+							<input type="file" class="file form-control" accept="image/*" name="foto" id="foto" required>
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="firma" class="col-lg-3 control-label">Subir gráfico de la firma:</label>
 		    			<div class="col-lg-8">
-							<input type="file" class="file form-control" name="firma" id="firma" required>
+							<input type="file" class="file form-control" accept="image/*" name="firma" id="firma" required>
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="huella" class="col-lg-3 control-label">Subir imagen de huella digital:</label>
 		    			<div class="col-lg-8">
-							<input type="file" class="file form-control" name="huella" id="huella" required>
+							<input type="file" class="file form-control" accept="image/*" name="huella" id="huella" required>
 		    			</div>
 		  			</div>
 		  			<div class="form-group text-center">
 						<input class="btn btn-md btn-danger" type="button" value="Volver" onclick="window.location='index.php';">
-						<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick="if(sexook()){window.location='ok.php';}">
+						<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick="window.location='ok.php';">
 					</div>	
 				</form>
 	  		</div>	
