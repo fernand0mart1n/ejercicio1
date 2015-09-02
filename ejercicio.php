@@ -69,14 +69,14 @@ require('datos.php');
 		  			<div class="form-group">
 		   				<label for="fecha_exp" class="col-lg-3 control-label">Fecha expedición</label>
 		    			<div class="col-lg-8">
-							<input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" disabled>
+							<input type="date" value="<?php echo date('Y-m-d'); ?>" disabled>
 							<input type="hidden" class="form-control" name="exp" id="exp" value="<?php date('Y-m-d'); ?>">
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="fecha_ven" class="col-lg-3 control-label">Fecha vencimiento</label>
 		    			<div class="col-lg-8">
-							<input type="text" class="form-control" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
+							<input type="text" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
 							<input type="hidden" class="form-control" name="ven" id="ven" value="<?php date('Y-m-d', strtotime("+15 Years")); ?>">
 		    			</div>
 		  			</div>
