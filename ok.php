@@ -23,7 +23,8 @@ require('datos.php');
   </div>
   <div class="col-md-8">
 	<H3>Todo joya, tamo listos.</H3>
-	<input class="btn btn-md btn-success" type="submit" value="Enviar">
+	<form method="post" action="index.php">
+	<input class="btn btn-md btn-success" type="submit" value="Volver">
 	<hr>
 	</form>
   </div>

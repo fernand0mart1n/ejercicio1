@@ -21,17 +21,17 @@ require('datos.php');
 	  		</div>
 	  		<div class="col-lg-12">
 				<H3 align="center">Ingrese sus datos</H3><br>
-				<form class="form-horizontal" method="post" role="form">
+				<form class="form-horizontal" method="post" role="form" action="ok.php">
 					<div class="form-group">
 		    			<label for="nombre" class="col-lg-3 control-label">Nombre(s)</label>
 					    <div class="col-lg-8">
-		      				<input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z'áéíóúÁÉÍÓÚ]{2,79}"  placeholder="Nombre(s)" title="Ingrese su(s) nombre(s) correctamente" required>
+		      				<input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z'áéíóúÁÉÍÓÚ\s]{2,79}"  placeholder="Nombre(s)" title="Ingrese su(s) nombre(s) correctamente" required>
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="apellido" class="col-lg-3 control-label">Apellido(s)</label>
 		    			<div class="col-lg-8">
-		      				<input type="text" class="form-control" name="apellido" id="apellido" pattern="[A-Za-z'áéíóúÁÉÍÓÚ]{2,79}" placeholder="Apellido(s)" required>
+		      				<input type="text" class="form-control" name="apellido" id="apellido" pattern="[A-Za-z'áéíóúÁÉÍÓÚ\s]{2,79}" placeholder="Apellido(s)" required>
 					    </div>
 		  			</div>
 		  			<div class="form-group">
@@ -171,7 +171,7 @@ require('datos.php');
 		  			</div>
 		  			<div class="form-group text-center">
 						<input class="btn btn-md btn-danger" type="button" value="Volver" onclick="window.location='index.php';">
-						<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick=<?php header('Location: ok.php'); ?>>
+						<input class="btn btn-md btn-success" type="submit" value="Enviar">
 					</div>	
 				</form>
 	  		</div>	
