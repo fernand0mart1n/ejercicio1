@@ -26,21 +26,10 @@ Extra: agregar un buscador.
 
 */
 
-$tipos = array("Seleccione una opción", "DNI", "LC", "LE");
+$tipos = array("DNI", "LC", "LE");
 
-$paises = array("Seleccione su país", "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Perú", "Uruguay", "Venezuela");
+$paises = array("Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Perú", "Uruguay", "Venezuela");
 
-$provincias = array("Provincia", "Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa",
+$provincias = array("Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa",
 "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fé", "Santiago del Estero",
 "Tierra del Fuego", "Tucumán");
-
-function texto($texto){
-	if (isset($texto)) {
-		if (is_string($texto) && strlen($texto) >= 100) {
-			return true;
-		} else {
-			$error['texto'] = "Formato de texto inadecuado. Reingrese correctamente.";
-			return false;
-		}
-	}
-}

@@ -11,7 +11,7 @@ require('datos.php');
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script type="text/javascript" src="lib/js/chiches.js"></script>
-		<script type="text/javascript" src="lib/js/validar.js"></script>
+		<!--<script type="text/javascript" src="lib/js/validar.js"></script>-->
 		<link href="lib/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
@@ -25,13 +25,13 @@ require('datos.php');
 					<div class="form-group">
 		    			<label for="nombre" class="col-lg-3 control-label">Nombre(s)</label>
 					    <div class="col-lg-8">
-		      				<input type="text" class="form-control" id="nombre"  placeholder="Nombre(s)" title="Ingrese su(s) nombre(s) correctamente" required>
+		      				<input type="text" class="form-control" id="nombre" pattern="[A-Za-z'áéíóúÁÉÍÓÚ]{2,79}"  placeholder="Nombre(s)" title="Ingrese su(s) nombre(s) correctamente" required>
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="apellido" class="col-lg-3 control-label">Apellido(s)</label>
 		    			<div class="col-lg-8">
-		      				<input type="text" class="form-control" id="apellido" placeholder="Apellido(s)" required>
+		      				<input type="text" class="form-control" id="apellido" pattern="[A-Za-z'áéíóúÁÉÍÓÚ]{2,79}" placeholder="Apellido(s)" required>
 					    </div>
 		  			</div>
 		  			<div class="form-group">
@@ -39,7 +39,7 @@ require('datos.php');
 		   				<div class="col-lg-8">
 		   				 	<div class="radio">
 		  					  	<label>
-									<input type="radio" name="sex" id="masc" value="M"> Masculino 
+									<input type="radio" name="sex" id="masc" value="M" required> Masculino 
 								</label>
 		    				</div>
 		    				<div class="radio"> 
@@ -52,7 +52,8 @@ require('datos.php');
 		 			<div class="form-group">
 		  				<label class="col-lg-3 control-label">Tipo de documento</label>
 		   				<div class="col-lg-8">
-							<select class="form-control">
+							<select class="form-control" required>
+								<option value="">Seleccione una opción</option>
 							<?php foreach ($tipos as $tipo){?>
 								<option value="<?php echo $tipo;?>"><?php echo $tipo;?></option>
 							<?php };?>
@@ -62,7 +63,7 @@ require('datos.php');
 		    		<div class="form-group">
 		   				<label for="documento" class="col-lg-3 control-label">Documento</label>
 		    			<div class="col-lg-8">
-							<input type="text" class="form-control" title="Debe ingresar su documento" name="documento" id="documento" placeholder="Ingrese su número de documento" required>
+							<input type="text" class="form-control" title="Debe ingresar su documento" pattern="[0-9]{1,10}" name="documento" id="documento" placeholder="Ingrese su número de documento" required>
 		   				</div>
 		  			</div>
 		  			<div class="form-group">
@@ -80,7 +81,8 @@ require('datos.php');
 					<div class="form-group">
 					    <label for="nacionalidad" class="col-lg-3 control-label">Nacionalidad</label>
 					    <div class="col-lg-8">
-							<select class="form-control">
+							<select class="form-control" required>
+								<option value="">Seleccione su país</option>
 							<?php foreach ($paises as $pais){?>
 								<option value="<?php echo $pais;?>"><?php echo $pais;?></option>
 							<?php };?>
@@ -96,8 +98,8 @@ require('datos.php');
 		  			<div class="form-group">
 		    			<label for="fecha_lugar" class="col-lg-3 control-label">Fecha y lugar de nacimiento:</label>
 		    			<div class="col-lg-2">
-							<select class="form-control">
-								<option value="dia">Día</option>
+							<select class="form-control" required>
+								<option value="">Día</option>
 								<?php for($i = 1; $i < 32; $i++){?>
 									<option value="<?php echo $i;?>"><?php echo $i;?></option>
 								<?php };?>
@@ -105,7 +107,7 @@ require('datos.php');
 						</div>
 						<div class="col-lg-2">
 							<select class="form-control">
-								<option value="mes">Mes</option>
+								<option value="">Mes</option>
 								<?php for($i = 1; $i < 13; $i++){?>
 									<option value="<?php echo $i;?>"><?php echo $i;?></option>
 								<?php };?>
@@ -113,7 +115,7 @@ require('datos.php');
 						</div>
 						<div class="col-lg-2">
 							<select class="form-control">
-								<option value="año">Año</option>
+								<option value="">Año</option>
 								<?php for($i = 2015; $i > 1900; $i--){?>
 									<option value="<?php echo $i;?>"><?php echo $i;?></option>
 								<?php };?>
@@ -121,6 +123,7 @@ require('datos.php');
 						</div>
 						<div class="col-lg-2">
 							<select class="form-control">
+								<option value="">Provincia</option>
 								<?php foreach ($provincias as $provincia){?>
 									<option value="<?php echo $provincia;?>"><?php echo $provincia;?></option>
 								<?php };?>
@@ -132,7 +135,7 @@ require('datos.php');
 				    	<div class="col-lg-8">
 				    		<div class="radio">
 				    			<label>
-									<input type="radio" name="don" id="donsi" value="si"> Si 
+									<input type="radio" name="don" id="donsi" value="si" required> Si 
 								</label>
 				    		</div>
 				    		<div class="radio"> 
