@@ -11,7 +11,7 @@ require('datos.php');
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script type="text/javascript" src="lib/js/chiches.js"></script>
-		<!--<script type="text/javascript" src="lib/js/validar.js"></script>-->
+		<script type="text/javascript" src="lib/js/validar.js"></script>
 		<link href="lib/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
@@ -171,7 +171,7 @@ require('datos.php');
 		  			</div>
 		  			<div class="form-group text-center">
 						<input class="btn btn-md btn-danger" type="button" value="Volver" onclick="window.location='index.php';">
-						<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick="window.location='ok.php';">
+						<input class="btn btn-md btn-success" type="submit" value="Enviar" onclick=<?php header('Location: ok.php'); ?>>
 					</div>	
 				</form>
 	  		</div>	
