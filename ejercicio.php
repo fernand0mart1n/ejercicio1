@@ -25,7 +25,7 @@ require('datos.php');
 					<div class="form-group">
 		    			<label for="nombre" class="col-lg-3 control-label">Nombre(s)</label>
 					    <div class="col-lg-8">
-		      				<input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z'áéíóúÁÉÍÓÚ\s]{2,79}"  placeholder="Nombre(s)" title="Ingrese su(s) nombre(s) correctamente" required>
+		      				<input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z'áéíóúÁÉÍÓÚ\s]{2,79}"  placeholder="Nombre(s)" required>
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
