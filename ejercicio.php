@@ -98,16 +98,25 @@ require('datos.php');
 		    			<div class="col-lg-2">
 							<select class="form-control">
 								<option value="dia">Día</option>
+								<?php for($i = 1; $i < 32; $i++){?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+								<?php };?>
 							</select>
 						</div>
 						<div class="col-lg-2">
 							<select class="form-control">
 								<option value="mes">Mes</option>
+								<?php for($i = 1; $i < 13; $i++){?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+								<?php };?>
 							</select>
 						</div>
 						<div class="col-lg-2">
 							<select class="form-control">
 								<option value="año">Año</option>
+								<?php for($i = 1900; $i < 2016; $i++){?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+								<?php };?>
 							</select>
 						</div>
 						<div class="col-lg-2">
