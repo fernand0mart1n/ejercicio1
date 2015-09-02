@@ -92,7 +92,7 @@ require('datos.php');
 				    <div class="form-group">
 				    	<label for="domicilio" class="col-lg-3 control-label">Domicilio</label>
 				    	<div class="col-lg-8">
-							<input type="text" class="form-control" title="Debe ingresar su domicilio" name="domicilio" id="domicilio" placeholder="Domicilio" required>
+							<input type="text" class="form-control" title="Debe ingresar su domicilio" maxlength="79" name="domicilio" id="domicilio" placeholder="Domicilio" required>
 				    	</div>
 				  	</div>
 		  			<div class="form-group">
@@ -148,7 +148,7 @@ require('datos.php');
 		  			<div class="form-group">
 		    			<label for="tramite" class="col-lg-3 control-label">Número de trámite</label>
 		   				<div class="col-lg-8">
-							<input type="text" class="form-control" title="Debe ingresar el número de trámite" name="tramite" id="tramite" placeholder="Número de trámite" required>
+							<input type="text" class="form-control" title="Debe ingresar el número de trámite" pattern="[0-9]{1,16}" name="tramite" id="tramite" placeholder="Número de trámite" required>
 		    			</div>
 		  			</div>
 		   			<div class="form-group">
