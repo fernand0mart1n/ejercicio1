@@ -26,7 +26,7 @@ require('datos.php');
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title text-center">Ingresar</h4>
+	          <h4 class="modal-title">Ingresar</h4>
 	        </div>
 	        <div class="modal-body">
 	          <form class="form-horizontal" method="post" role="form" action="ok.php">
@@ -39,12 +39,11 @@ require('datos.php');
 		  			<div class="form-group">
 		    			<label for="pass" class="col-lg-3 control-label">Contraseña</label>
 		    			<div class="col-lg-8">
-		      				<input type="password" class="form-control" name="pass" id="pass" pattern="{2,79}" title="La contraseña debe tener al menos 2 dígitos" placeholder="Contraseña" required>
+		      				<input type="password" class="form-control" name="pass" id="pass" pattern="{2,79}" title="La contraseña debe tener al menos 2 dígitos" placeholder="Apellido(s)" required>
 					    </div>
 		  			</div>
-		  			<div class="form-group">
-		  			<br>
-		    			<div class="col-lg-12" style="text-align:center">
+		  			<div class="form-group" style="text-align:center">
+		    			<div class="col-lg-12"><br>
 		      				<a href="olvide.php">¿Olvidaste tu contraseña?</a>
 					    </div>
 		  			</div>
@@ -52,6 +51,7 @@ require('datos.php');
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	          <button type="button" class="btn btn-success">Entrar</button>	          
 	        </div>
 	      </div>
 	      
@@ -69,7 +69,7 @@ require('datos.php');
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">Valdesoft</a>
+	      <a class="navbar-brand" href="">Valdesoft</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
@@ -88,11 +88,11 @@ require('datos.php');
 		  	<li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="ejercicio.php">Registrar persona</a></li>
+	            <li><a href="#">Registrar persona</a></li>
 	            <li class="divider"></li>
-	            <li><a href="perfil.php">Mi información</a></li>
+	            <li><a href="#">Mi información</a></li>
 	            <li class="divider"></li>
-	            <li><a href="index.php" onclick="<?php session_destroy(); ?>">Salir</a></li>
+	            <li><a href="#">Salir</a></li>
 	          </ul>
 	        </li>
 	      <?php }; ?>
@@ -107,7 +107,7 @@ require('datos.php');
 	<H3 align="center">Bienvenido al registro de personas</H3>
 	<img src="img/personas.gif" style="width: 100%;max-height: 100%";>
 	<img src="img/dni.jpg" style="width: 100%;max-height: 100%";>
-	<br><br>
+	<br>
   </div>
   <div class="col-md-2">
   </div>
@@ -116,3 +116,4 @@ require('datos.php');
 </body>
 </html>
 
+a

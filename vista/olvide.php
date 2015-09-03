@@ -30,7 +30,9 @@ if(isset($_SESSION['user'])){
 								<label for="user" class="col-lg-4 control-label">Ingrese su dirección de correo electrónico</label>
 							    <div class="col-lg-6">
 									<input type="email" class="form-control" name="user" id="user" pattern="{5,100}"  placeholder="Email" required>
-									<input class="btn btn-success form-group" type="submit" value="Enviar">
+									<br>
+									<input class="btn btn-default" type="button" value="Volver" align="center">
+									<input class="btn btn-success" type="submit" value="Enviar" align="center">
 								</div>
 							</div>
 						</form>
