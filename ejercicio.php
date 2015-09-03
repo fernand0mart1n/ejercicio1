@@ -1,6 +1,27 @@
 <?php
 
+/*
+
+Desarrollar un formulario de ingreso de datos para un DNI. 
+- Aplicar todos los conocimientos previos: HTML5, CSS, Bootstrap, jQuery, etc.
+- Validar los datos ingresados DESDE PHP:
+- presencia (campos obligatorios)
+- formato (ej. sólo números)
+- reglas de negocio (ej. la fecha de vencimiento no puede ser menor o igual que la fecha de nacimiento y emisión).
+- Separar la lógica de la parte visual (archivos PHP separados, usar función require)
+- Si el formulario no es válido, redirigir al formulario mostrando el error correspondiente.
+- Si el formulario es válido, mostrar una nueva página con los datos ingresados.
+- Si se intenta "saltear" la validación (ej. acceder a la nueva página directamente) redirigir a la página inicial (función header).
+
+validar por js fecha de nacimiento, pais con provincia e imagenes de dni
+
+*/
+
 session_start();
+
+if(!isset($_SESSION['user'])){
+	header('Location: index.php');
+}
 
 require('datos.php');
 
@@ -15,6 +36,45 @@ require('datos.php');
 		<link href="lib/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Valdesoft</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Link <span class="sr-only"></span></a></li>
+	        <li><a href="#">Link</a></li>
+	      </ul>
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search">
+	        </div>
+	        <button type="submit" class="btn btn-default">Submit</button>
+	      </form>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">Action</a></li>
+	            <li><a href="#">Another action</a></li>
+	            <li><a href="#">Something else here</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">Separated link</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">One more separated link</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1">
@@ -69,14 +129,14 @@ require('datos.php');
 		  			<div class="form-group">
 		   				<label for="fecha_exp" class="col-lg-3 control-label">Fecha expedición</label>
 		    			<div class="col-lg-8">
-							<input type="date" value="<?php echo date('Y-m-d'); ?>" disabled>
+							<input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" disabled>
 							<input type="hidden" class="form-control" name="exp" id="exp" value="<?php date('Y-m-d'); ?>">
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="fecha_ven" class="col-lg-3 control-label">Fecha vencimiento</label>
 		    			<div class="col-lg-8">
-							<input type="text" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
+							<input type="date" class="form-control" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
 							<input type="hidden" class="form-control" name="ven" id="ven" value="<?php date('Y-m-d', strtotime("+15 Years")); ?>">
 		    			</div>
 		  			</div>
