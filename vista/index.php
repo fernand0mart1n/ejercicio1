@@ -2,6 +2,9 @@
 
 session_start();
 
+include "../modelo/conexion.class.php";
+include "../modelo/usuario.class.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,7 @@ session_start();
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">Ingresar</h4>
+	          <h4 class="modal-title text-center">Ingresar</h4>
 	        </div>
 	        <div class="modal-body">
 	          <form class="form-horizontal" method="post" role="form" action="index.php">
