@@ -12,11 +12,11 @@ if(isset($_SESSION['user'])){
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script type="text/javascript" src="lib/js/chiches.js"></script>
-		<script type="text/javascript" src="lib/js/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="lib/js/validar.js"></script>
-		<link href="lib/css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript" src="../lib/js/chiches.js"></script>
+		<script type="text/javascript" src="../lib/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../lib/js/validar.js"></script>
+		<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
 		<br><br>

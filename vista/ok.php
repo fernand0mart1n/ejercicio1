@@ -2,8 +2,6 @@
 
 session_start();
 
-require('datos.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -11,10 +9,10 @@ require('datos.php');
 <head>
 	<title>.:: Ejercicio ::.</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script type="text/javascript" src="lib/js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
-	<link href="lib/css/bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="lib/js/validar.js"></script>
+	<script type="text/javascript" src="../lib/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
+	<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="../lib/js/validar.js"></script>
 </head>
 <body>
 <div class="container">
