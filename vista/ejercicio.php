@@ -2,12 +2,10 @@
 
 /*
 
-Desarrollar un formulario de ingreso de datos para un DNI. 
 - Validar los datos ingresados DESDE PHP:
 - reglas de negocio (ej. la fecha de vencimiento no puede ser menor o igual que la fecha de nacimiento y emisión).
 - Separar la lógica de la parte visual (archivos PHP separados, usar función require)
 - Si el formulario es válido, mostrar una nueva página con los datos ingresados.
-- Si se intenta "saltear" la validación (ej. acceder a la nueva página directamente) redirigir a la página inicial (función header).
 
 validar por js fecha de nacimiento, pais con provincia e imagenes de dni
 
@@ -19,6 +17,7 @@ if(!isset($_SESSION['user'])){
 	header('Location: index.php');
 }
 
+include "../controlador/conexionbbdd.php";
 require('../modelo/datos.php');
 
 ?>
@@ -29,7 +28,7 @@ require('../modelo/datos.php');
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script type="text/javascript" src="../lib/js/chiches.js"></script>
 		<script type="text/javascript" src="../lib/js/validar.js"></script>
-		<link href="lib/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
 	<?php if(isset($_SESSION['user'])){?>
@@ -53,14 +52,14 @@ require('../modelo/datos.php');
 	        </div>
 	        <button type="submit" class="btn btn-default">Buscar</button>
 	      </form>
-		  	<li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		  	<li class="dropdown navbar-right">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['user'];?><span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Registrar persona</a></li>
+	            <li><a href="ejercicio.php">Registrar persona</a></li>
 	            <li class="divider"></li>
-	            <li><a href="#">Mi información</a></li>
+	            <li><a href="info.php">Mi información</a></li>
 	            <li class="divider"></li>
-	            <li><a href="#">Salir</a></li>
+	            <li><a href="salir">Salir</a></li>
 	          </ul>
 	        </li>
 	    </div>
@@ -75,7 +74,7 @@ require('../modelo/datos.php');
 	  		</div>
 	  		<div class="col-lg-12">
 				<H3 align="center">Ingrese sus datos</H3><br>
-				<form class="form-horizontal" method="post" role="form" action="ok.php">
+				<form class="form-horizontal" method="post" role="form" action="insert">
 					<div class="form-group">
 		    			<label for="nombre" class="col-lg-3 control-label">Nombre(s)</label>
 					    <div class="col-lg-8">
@@ -137,7 +136,7 @@ require('../modelo/datos.php');
 					<div class="form-group">
 					    <label for="nacionalidad" class="col-lg-3 control-label">Nacionalidad</label>
 					    <div class="col-lg-8">
-							<select class="form-control" name="nac" id="nac" required>
+							<select class="form-control" name="nac" id="nac" onchange="<?php if($nac != "Argentina"){ $provincia = "Extranjero"; }?>" required>
 								<option value="">Seleccione su país</option>
 							<?php foreach ($paises as $pais){?>
 								<option value="<?php echo $pais;?>"><?php echo $pais;?></option>

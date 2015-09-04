@@ -2,9 +2,7 @@
 
 session_start();
 
-include "../modelo/conexion.class.php";
-include "../modelo/usuario.class.php";
-
+include "../controlador/conexionbbdd.php";
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +28,7 @@ include "../modelo/usuario.class.php";
 	          <h4 class="modal-title text-center">Ingresar</h4>
 	        </div>
 	        <div class="modal-body">
-	          <form class="form-horizontal" method="post" role="form" action="index.php">
+	          <form class="form-horizontal" method="post" role="form" action="login">
 					<div class="form-group">
 		    			<label for="user" class="col-lg-3 control-label">Usuario</label>
 					    <div class="col-lg-8">
@@ -72,25 +70,34 @@ include "../modelo/usuario.class.php";
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	      </ul>
+	      <?php if(!isset($_SESSION['user'])){?>
+	      <form class="navbar-form navbar-center" srole="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Búsqueda de registros" title="Para realizar búsquedas debe iniciar sesión" disabled>
+	        </div>
+	        <button type="submit" class="btn btn-default" title="Para realizar búsquedas debe iniciar sesión" disabled>Buscar</button>
+	      </form>
+	      <?php } else {?>
 	      <form class="navbar-form navbar-center" role="search">
 	        <div class="form-group">
 	          <input type="text" class="form-control" placeholder="Búsqueda de registros">
 	        </div>
 	        <button type="submit" class="btn btn-default">Buscar</button>
 	      </form>
+	      <?php }; ?>
 	      <?php if(!isset($_SESSION['user'])){?>
 		  	<ul class="nav navbar-nav navbar-right">
 		    	<li><a href="" data-toggle="modal" data-target="#myModal">Ingresar</a></li>
 		    </ul>
 		  <?php } else {?>
-		  	<li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		  	<li class="dropdown navbar-right">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['user'];?><span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Registrar persona</a></li>
+	            <li><a href="ejercicio.php">Registrar persona</a></li>
 	            <li class="divider"></li>
-	            <li><a href="#">Mi información</a></li>
+	            <li><a href="info.php">Mi información</a></li>
 	            <li class="divider"></li>
-	            <li><a href="#">Salir</a></li>
+	            <li><a href="salir">Salir</a></li>
 	          </ul>
 	        </li>
 	      <?php }; ?>
@@ -105,7 +112,7 @@ include "../modelo/usuario.class.php";
 	<H3 align="center">Bienvenido al registro de personas</H3>
 	<img src="../lib/img/personas.gif" style="width: 100%;max-height: 100%";>
 	<img src="../lib/img/dni.jpg" style="width: 100%;max-height: 100%";>
-	<br>
+	<br><br>
   </div>
   <div class="col-md-2">
   </div>
@@ -113,5 +120,3 @@ include "../modelo/usuario.class.php";
 </div>
 </body>
 </html>
-
-a
