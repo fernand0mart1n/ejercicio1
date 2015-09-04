@@ -92,12 +92,12 @@ require('../modelo/datos.php');
 		   				<div class="col-lg-8">
 		   				 	<div class="radio">
 		  					  	<label>
-									<input type="radio" name="sex" id="masc" value="M" required> Masculino 
+									<input type="radio" name="sex" id="sex" value="M" required> Masculino 
 								</label>
 		    				</div>
 		    				<div class="radio"> 
 		    					<label>
-									<input type="radio" name="sex" id="feme" value="F"> Femenino
+									<input type="radio" name="sex" id="sex" value="F"> Femenino
 								</label>
 		    				</div>
 		  				</div>  
