@@ -33,3 +33,19 @@ $paises = array("Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Perú", 
 $provincias = array("Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa",
 "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fé", "Santiago del Estero",
 "Tierra del Fuego", "Tucumán");
+
+ function validaRequerido($valor){
+    if(trim($valor) == ''){
+       return false;
+    }else{
+       return true;
+    }
+ }
+
+ function validarEntero($valor){
+    if(filter_var($valor, FILTER_VALIDATE_INT === FALSE){
+       return false;
+    }else{
+       return true;
+    }
+ }

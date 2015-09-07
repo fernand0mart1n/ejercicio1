@@ -21,6 +21,13 @@ session_start();
   </div>
   <div class="col-md-8">
 	<H3>Todo joya, tamo listos. Acá van tus datos</H3>
+	<?php if ($errores): ?>
+	   <ul style="color: #f00;">
+	      <?php foreach ($errores as $error): ?>
+	         <li> <?php echo $error ?> </li>
+	      <?php endforeach; ?>
+	   </ul>
+	<?php endif; ?>
 	<form method="post" action="index.php">
 	<input class="btn btn-md btn-success" type="submit" value="Volver">
 	<hr>

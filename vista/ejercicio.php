@@ -18,7 +18,53 @@ if(!isset($_SESSION['user'])){
 }
 
 include "../controlador/conexionbbdd.php";
-require('../modelo/datos.php');
+require_once '../modelo/datos.php';
+
+$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$apellido = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$sexo
+$tipodoc
+$documento
+$fecha_exp
+$fecha_ven
+$nacionalidad
+$domicilio
+$fecha_lugar
+$donante
+$nrotramite
+$foto
+$firma
+$huella
+
+//Este array guardará los errores de validación que surjan.
+$errores = array();
+
+//Pregunta si está llegando una petición por POST, lo que significa que el usuario envió el formulario.
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+   //Valida que el campo nombre no esté vacío.
+   if (!validaRequerido($nombre)) {
+      $errores[] = 'El campo nombre es incorrecto.';
+   }
+
+      if (!validaRequerido($apellido)) {
+      $errores[] = 'El campo nombre es incorrecto.';
+   }
+
+   if (!validarEntero()) {
+      $errores[] = 'El campo edad es incorrecto.';
+   }
+
+   //Verifica si ha encontrado errores y de no haber redirige a la página con el mensaje de que pasó la validación.
+   if(!$errores){
+      header('Location: ok.php');
+      exit;
+   }
+}
+
+
+
+
+
 
 ?>
 
