@@ -31,7 +31,7 @@ if(isset($_SESSION['user'])){
 							    <div class="col-lg-6">
 									<input type="email" class="form-control" name="user" id="user" pattern="{5,100}"  placeholder="Email" required>
 									<br>
-									<input class="btn btn-default" type="button" value="Volver" align="center">
+									<input class="btn btn-default" type="button" value="Volver" onclick="window.location='index.php';" align="center">
 									<input class="btn btn-success" type="submit" value="Enviar" align="center">
 								</div>
 							</div>

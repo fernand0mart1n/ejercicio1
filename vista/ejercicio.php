@@ -4,10 +4,7 @@
 
 - Validar los datos ingresados DESDE PHP:
 - reglas de negocio (ej. la fecha de vencimiento no puede ser menor o igual que la fecha de nacimiento y emisión).
-- Separar la lógica de la parte visual (archivos PHP separados, usar función require)
 - Si el formulario es válido, mostrar una nueva página con los datos ingresados.
-
-validar por js fecha de nacimiento, pais con provincia e imagenes de dni
 
 */
 
@@ -21,20 +18,20 @@ include "../controlador/conexionbbdd.php";
 require_once '../modelo/datos.php';
 
 $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$apellido = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$sexo
-$tipodoc
-$documento
-$fecha_exp
-$fecha_ven
-$nacionalidad
-$domicilio
-$fecha_lugar
-$donante
-$nrotramite
-$foto
-$firma
-$huella
+$apellido = isset($_POST['apellido']) ? $_POST['apellido'] : null;
+$sexo = isset($_POST['sexo']) ? $_POST['sexo'] : null;
+$tipodoc = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$documento = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$fecha_exp = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$fecha_ven = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$nacionalidad = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$domicilio = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$fecha_lugar = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$donante = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$nrotramite = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$foto = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$firma = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$huella = isset($_POST['nombre']) ? $_POST['nombre'] : null;
 
 //Este array guardará los errores de validación que surjan.
 $errores = array();

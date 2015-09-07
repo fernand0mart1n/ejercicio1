@@ -35,7 +35,7 @@ $provincias = array("Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", 
 "Tierra del Fuego", "Tucumán");
 
  function validaRequerido($valor){
-    if(trim($valor) == ''){
+    if(trim(empty($valor)){
        return false;
     }else{
        return true;
@@ -49,3 +49,15 @@ $provincias = array("Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", 
        return true;
     }
  }
+
+//falta arreglar la navbar con el espacio en blanco
+//validar por js fecha de nacimiento, pais con provincia e imagenes de dni
+http://web.ontuts.com/tutoriales/como-validar-un-formulario-con-php-y-javascript-jquery/
+http://www.enricflorit.com/como-validar-datos-de-formularios-en-el-servidor-con-php/#sthash.Cl8Tov7h.dpbs
+
+empty(), is_bool(), is_string(), is_int(), is_float(), is_numeric() e is_null()
+
+ if(strlen($username) > 15){ 
+$response[] ="El nombre debe tener menos de 15 caracteres"; 
+
+} 
