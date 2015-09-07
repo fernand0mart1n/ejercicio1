@@ -20,18 +20,18 @@ require_once '../modelo/datos.php';
 $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : null;
 $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : null;
 $sexo = isset($_POST['sexo']) ? $_POST['sexo'] : null;
-$tipodoc = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$documento = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$fecha_exp = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$fecha_ven = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$nacionalidad = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$domicilio = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$fecha_lugar = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$donante = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$nrotramite = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$foto = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$firma = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$huella = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$tipodoc = isset($_POST['tipodoc']) ? $_POST['tipodoc'] : null;
+$documento = isset($_POST['documento']) ? $_POST['documento'] : null;
+$fechaexp = isset($_POST['fechaexp']) ? $_POST['fechaexp'] : null;
+$fechaven = isset($_POST['fechaven']) ? $_POST['fechaven'] : null;
+$nacionalidad = isset($_POST['nacionalidad']) ? $_POST['nacionalidad'] : null;
+$domicilio = isset($_POST['domicilio']) ? $_POST['domicilio'] : null;
+$fechalugar = isset($_POST['fechalugar']) ? $_POST['fechalugar'] : null;
+$donante = isset($_POST['donante']) ? $_POST['donante'] : null;
+$nrotramite = isset($_POST['nrotramite']) ? $_POST['nrotramite'] : null;
+$foto = isset($_POST['foto']) ? $_POST['foto'] : null;
+$firma = isset($_POST['firma']) ? $_POST['firma'] : null;
+$huella = isset($_POST['huella']) ? $_POST['huella'] : null;
 
 //Este array guardará los errores de validación que surjan.
 $errores = array();
@@ -57,11 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       exit;
    }
 }
-
-
-
-
-
 
 ?>
 
