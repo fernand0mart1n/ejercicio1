@@ -43,10 +43,10 @@ $provincias = array("Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", 
  }
 
  function validarEntero($valor){
-    if(filter_var($valor, FILTER_VALIDATE_INT === FALSE){
-       return false;
-    }else{
+    if(ctype_digit($valor){
        return true;
+    }else{
+       return false;
     }
  }
 
