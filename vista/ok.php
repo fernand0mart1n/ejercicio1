@@ -2,8 +2,6 @@
 
 session_start();
 
-include "ejercicio.php";
-
 ?>
 
 <!DOCTYPE html>

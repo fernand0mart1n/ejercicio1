@@ -36,8 +36,3 @@ function validarFechas($fecha){
 
 //http://web.ontuts.com/tutoriales/como-validar-un-formulario-con-php-y-javascript-jquery/
 //http://www.enricflorit.com/como-validar-datos-de-formularios-en-el-servidor-con-php/#sthash.Cl8Tov7h.dpbs
-
- if(strlen($username) > 15){ 
-$response[] ="El nombre debe tener menos de 15 caracteres"; 
-
-} 

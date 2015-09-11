@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errores[] = 'El domicilio es incorrecto';
    }    
    
-       if (date($año, $mes, $dia) > $fechaexp){
+       if (date_date_set($fechaexp, $año, $mes, $dia) > $fechaexp){
 	   $errores[] = 'Fecha de nacimiento errónea';
    }
    
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
    //Verifica si ha encontrado errores y de no haber redirige a la página con el mensaje de que pasó la validación.
    if(!$errores){
-      header('Location: ok.php');
+      require('ok.php');
       exit;
    }
 }
