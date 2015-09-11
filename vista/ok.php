@@ -2,6 +2,8 @@
 
 session_start();
 
+require "ejercicio.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -21,17 +23,34 @@ session_start();
   </div>
   <div class="col-md-8">
 	<?php if ($errores): ?>
-	   <ul style="color: #f00;">
+		<H3>Hubieron errores al procesar sus datos:</H3>
+		<ul style="color: #f00;">
 	      <?php foreach ($errores as $error): ?>
 	         <li> <?php echo $error ?> </li>
 	      <?php endforeach; ?>
 	      <form method="post" action="index.php">
 		  <input class="btn btn-md btn-danger" type="submit" value="Volver">
 	   </ul>
-	<?php else{?>
-		<H3>Todo joya, tamo listos. Acá van tus datos</H3>
-		<form method="post" action="index.php">
-		<input class="btn btn-md btn-success" type="submit" value="Volver">
+	<?php else:?>
+		<H3>Sus datos:</H3>
+		<ul style="color: #f00;">
+	         <li>Nombre: <?php echo $nombre ?> </li>
+	         <li>Apellido: <?php echo $apellido ?> </li>
+	         <li>Sexo: <?php echo $sexo ?> </li>
+	         <li>Tipo de documento: <?php echo $tipodoc ?> </li>
+	         <li>Documento: <?php echo $documento ?> </li>
+	         <li>Fecha de expedición: <?php echo $fechaexp ?> </li>
+	         <li>Fecha de vencimiento: <?php echo $fechaven ?> </li>
+	         <li>Nacionalidad: <?php echo $nacionalidad ?> </li>
+	         <li>Domicilio: <?php echo $domicilio ?> </li>
+	         <li>Fecha de nacimiento: <?php echo date($año, $mes, $dia); ?> </li>
+	         <li>Lugar de nacimiento: <?php echo $provincia ?> </li>
+	         <li>¿Es donante?: <?php echo $donante ?> </li>
+	         <li>Número de trámite <?php echo $nrotramite ?> </li>
+	      <form method="post" action="insert">
+		  <input class="btn btn-md btn-danger" type="button" value="Cancelar" onclick="window.location='index.php';">
+		  <input class="btn btn-md btn-success" type="submit" value="Confirmar">
+	   </ul>
 	<?php endif; ?>
 	<form method="post" action="index.php">
 	<input class="btn btn-md btn-success" type="submit" value="Volver">

@@ -7,16 +7,18 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
-	/*if($_SERVER['REQUEST_METHOD'] == 'GET' && !isset($_GET['action']))
+	/*
+	if($_SERVER['REQUEST_METHOD'] == 'GET' && !isset($_GET['action']))
 	{
 		header("Location: index.php");
 	}	
 	if($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['action']))
 	{
 		header("Location: index.php");
-	}*/
-
-	if($_SERVER['REQUEST_METHOD'] == 'POST')
+	}
+	*/
+	
+	if($_SERVER['REQUEST_METHOD'] == 'post')
 	{
 		$action = $_POST['action'];
 
@@ -26,16 +28,15 @@ if(!isset($_SESSION)){
 			$pass = $_POST['pass'];
 			try{
 				$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
-				$sql = "SELECT * FROM usuarios WHERE user = :usuario AND pass = :contrasenia";
+				$sql = "SELECT * FROM usuarios WHERE user = :user AND pass = :pass";
 				$stmt = $conn->prepare($sql);
-				$stmt->bindParam(':usuario', $user, PDO::PARAM_STR);
-				$stmt->bindParam(':contrasenia', $pass, PDO::PARAM_STR);
+				$stmt->bindParam(':user', $user, PDO::PARAM_STR);
+				$stmt->bindParam(':pass', $pass, PDO::PARAM_STR);
 				$stmt->execute();
 				if($stmt->rowCount() == 1)
 				{
 					$fila = $stmt->fetch(PDO::FETCH_ASSOC);
-					$_SESSION['nombre'] = $fila['nombre'];
-					$_SESSION['apellido'] = $fila['apellido'];
+					$_SESSION['user'] = $fila['user'];
 					$_SESSION['id'] = $fila['id'];
 					header("Location: index.php");
 					die();

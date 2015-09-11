@@ -2,8 +2,6 @@
 
 /*
 
-- Validar los datos ingresados DESDE PHP:
-- reglas de negocio (ej. la fecha de vencimiento no puede ser menor o igual que la fecha de nacimiento y emisión).
 - Si el formulario es válido, mostrar una nueva página con los datos ingresados.
 
 */
@@ -40,16 +38,56 @@ $errores = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    //Valida que el campo nombre no esté vacío.
    if (!validaRequerido($nombre)) {
-      $errores[] = 'El campo nombre es incorrecto.';
+      $errores[] = 'El nombre es incorrecto.';
    }
 
       if (!validaRequerido($apellido)) {
-      $errores[] = 'El campo nombre es incorrecto.';
+      $errores[] = 'El apellido es incorrecto.';
+   }
+   
+      if (!validaRequerido($sexo)) {
+      $errores[] = 'El sexo es incorrecto.';
+   }
+   
+		if (!validaRequerido($tipodoc)) {
+      $errores[] = 'El tipo de documento es incorrecto.';
    }
 
-   if (!validarEntero()) {
-      $errores[] = 'El campo edad es incorrecto.';
+	    if (!validarEntero($documento)) {
+      $errores[] = 'El documento es incorrecto.';
    }
+   
+	    if (!validarFechas($fechaexp) && $fechaven > fechaexp){
+	   $errores[] = 'Fecha de expedición errónea';
+   }
+   
+      if (!validarFechas($fechaven) && $fechaven < fechaexp){
+	   $errores[] = 'Fecha de vencimiento errónea';
+   }
+   
+      if (!validaRequerido($nacionalidad)) {
+      $errores[] = 'La nacionalidad es incorrecta';
+   }  
+   
+      if (!validaRequerido($domicilio)) {
+      $errores[] = 'El domicilio es incorrecto';
+   }    
+   
+       if (!validarFechas(date($año, $mes, $dia)) && date($año, $mes, $dia) > fechaexp){
+	   $errores[] = 'Fecha de nacimiento errónea';
+   }
+   
+      if (!validaRequerido($provincia)) {
+      $errores[] = 'La provincia de nacimiento es incorrecta';
+   }   
+      if (!validaRequerido($donante)) {
+      $errores[] = 'Error en el campo donante';
+   }
+   
+      if (!validarEntero($nrotramite)) {
+      $errores[] = 'El número de trámite es incorrecto.';
+   }
+   
 
    //Verifica si ha encontrado errores y de no haber redirige a la página con el mensaje de que pasó la validación.
    if(!$errores){
@@ -112,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	  		</div>
 	  		<div class="col-lg-12">
 				<H3 align="center">Ingrese sus datos</H3><br>
-				<form class="form-horizontal" method="post" role="form" action="insert">
+				<form class="form-horizontal" method="post" role="form" action="ok.php">
 					<div class="form-group">
 		    			<label for="nombre" class="col-lg-3 control-label">Nombre(s)</label>
 					    <div class="col-lg-8">
@@ -143,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		 			<div class="form-group">
 		  				<label class="col-lg-3 control-label">Tipo de documento</label>
 		   				<div class="col-lg-8">
-							<select class="form-control" name="tipo" id="tipo" required>
+							<select class="form-control" name="tipodoc" id="tipodoc" required>
 								<option value="">Seleccione una opción</option>
 							<?php foreach ($tipos as $tipo){?>
 								<option value="<?php echo $tipo;?>"><?php echo $tipo;?></option>

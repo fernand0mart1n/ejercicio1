@@ -28,7 +28,7 @@ include "../controlador/conexionbbdd.php";
 	          <h4 class="modal-title text-center">Ingresar</h4>
 	        </div>
 	        <div class="modal-body">
-	          <form class="form-horizontal" method="post" role="form" action="login">
+	          <form class="form-horizontal" method="post" role="form" action="../controlador/conexionbbdd.php">
 					<div class="form-group">
 		    			<label for="user" class="col-lg-3 control-label">Usuario</label>
 					    <div class="col-lg-8">
@@ -47,6 +47,7 @@ include "../controlador/conexionbbdd.php";
 					    </div>
 		  			</div>
 		        </div>
+		          <input id="action" type="hidden" name="action" value="login"/>
 		        <div class="modal-footer">
 		          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 		          <button type="submit" class="btn btn-success">Entrar</button>	          
