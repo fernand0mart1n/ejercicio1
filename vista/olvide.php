@@ -17,6 +17,11 @@ if(isset($_SESSION['user'])){
 		<script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../lib/js/validar.js"></script>
 		<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+		<script>
+		function myFunction() {
+			alert("Recibirá una contraseña temporal en su correo");
+		}
+		</script>
 	</head>
 	<body>
 		<br><br>
@@ -25,14 +30,14 @@ if(isset($_SESSION['user'])){
 					<div class="col-md-1">
 			  		</div>
 			  		<div class="col-lg-12">
-						<form class="form-horizontal" method="post" role="form">
+						<form class="form-horizontal" method="post" role="form" onsubmit="myFunction()">
 							<div class="form-group">
 								<label for="user" class="col-lg-4 control-label">Ingrese su dirección de correo electrónico</label>
 							    <div class="col-lg-6">
 									<input type="email" class="form-control" name="user" id="user" pattern="{5,100}"  placeholder="Email" required>
 									<br>
 									<input class="btn btn-default" type="button" value="Volver" onclick="window.location='index.php';" align="center">
-									<input class="btn btn-success" type="submit" value="Enviar" onclick="alert("Recibirá una contraseña temporal en su correo");" align="center">
+									<input class="btn btn-success" type="submit" value="Enviar" align="center">
 								</div>
 							</div>
 						</form>
