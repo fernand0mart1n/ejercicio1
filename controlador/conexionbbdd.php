@@ -7,17 +7,6 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
-	/*
-	if($_SERVER['REQUEST_METHOD'] == 'GET' && !isset($_GET['action']))
-	{
-		header("Location: index.php");
-	}	
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['action']))
-	{
-		header("Location: index.php");
-	}
-	*/
-	
 	if($_SERVER['REQUEST_METHOD'] == 'post')
 	{
 		$action = $_POST['action'];
@@ -45,9 +34,8 @@ if(!isset($_SESSION)){
 				throw new Exception($e->getMessage());
 			}
 		}
-
-		//seccion que maneja el alta de usuarios///////////////////////////////////////////
-		/*if($action == 'insert')
+/*
+		if($action == 'insert')
 		{
 			$apellido = 	$_POST['apellido'];
 			$nombre = 		$_POST['nombre'];
@@ -83,10 +71,10 @@ if(!isset($_SESSION)){
 				header("Location: ok.php");
 			}
 			
-		}
-	}*/
+		}*/
+	
 	//verifica acciones por metodo get/////////////////////////////////////////////////////
-	/*if($_SERVER['REQUEST_METHOD'] == 'GET')
+	if($_SERVER['REQUEST_METHOD'] == 'GET')
 	{
 		$action1 = $_GET['action'];
 		if($action == 'index')
@@ -102,5 +90,5 @@ if(!isset($_SESSION)){
 			
 			die();
 		}
-	}*/
+	}
 }

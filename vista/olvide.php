@@ -32,7 +32,7 @@ if(isset($_SESSION['user'])){
 									<input type="email" class="form-control" name="user" id="user" pattern="{5,100}"  placeholder="Email" required>
 									<br>
 									<input class="btn btn-default" type="button" value="Volver" onclick="window.location='index.php';" align="center">
-									<input class="btn btn-success" type="submit" value="Enviar" align="center">
+									<input class="btn btn-success" type="submit" value="Enviar" onclick="alert("Recibirá una contraseña temporal en su correo");" align="center">
 								</div>
 							</div>
 						</form>
