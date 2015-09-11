@@ -2,7 +2,7 @@
 
 session_start();
 
-require "ejercicio.php";
+include "ejercicio.php";
 
 ?>
 
@@ -33,6 +33,7 @@ require "ejercicio.php";
 	   </ul>
 	<?php else:?>
 		<H3>Sus datos:</H3>
+		<form method="post" role="form" action="../controlador/conexionbbdd.php">
 		<ul style="color: #f00;">
 	         <li>Nombre: <?php echo $nombre ?> </li>
 	         <li>Apellido: <?php echo $apellido ?> </li>
@@ -43,14 +44,15 @@ require "ejercicio.php";
 	         <li>Fecha de vencimiento: <?php echo $fechaven ?> </li>
 	         <li>Nacionalidad: <?php echo $nacionalidad ?> </li>
 	         <li>Domicilio: <?php echo $domicilio ?> </li>
-	         <li>Fecha de nacimiento: <?php echo date($año, $mes, $dia); ?> </li>
+	         <li>Fecha de nacimiento: <?php echo date_date_set($fechalugar, $año, $mes, $dia); ?> </li>
 	         <li>Lugar de nacimiento: <?php echo $provincia ?> </li>
 	         <li>¿Es donante?: <?php echo $donante ?> </li>
-	         <li>Número de trámite <?php echo $nrotramite ?> </li>
-	      <form method="post" action="insert">
+	         <li>Número de trámite: <?php echo $nrotramite ?> </li>
+		  <input id="action" type="hidden" name="action" value="insert"/>
 		  <input class="btn btn-md btn-danger" type="button" value="Cancelar" onclick="window.location='index.php';">
 		  <input class="btn btn-md btn-success" type="submit" value="Confirmar">
 	   </ul>
+	   </form>
 	<?php endif; ?>
 	<form method="post" action="index.php">
 	<input class="btn btn-md btn-success" type="submit" value="Volver">

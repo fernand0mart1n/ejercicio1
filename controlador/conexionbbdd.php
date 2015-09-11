@@ -7,7 +7,7 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
-	if($_SERVER['REQUEST_METHOD'] == 'post')
+	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		$action = $_POST['action'];
 
@@ -27,66 +27,82 @@ if(!isset($_SESSION)){
 					$fila = $stmt->fetch(PDO::FETCH_ASSOC);
 					$_SESSION['user'] = $fila['user'];
 					$_SESSION['id'] = $fila['id'];
-					header("Location: index.php");
+					header("Location: ../vista/index.php");
 					die();
 				}	
 			} catch(PDOException $e){
 				throw new Exception($e->getMessage());
 			}
 		}
-/*
+		
 		if($action == 'insert')
 		{
-			$apellido = 	$_POST['apellido'];
 			$nombre = 		$_POST['nombre'];
-			$dni = 			$_POST['dni'];
-			$fecha_nacim =	$_POST['fecha']; 
+			$apellido = 	$_POST['apellido'];
 			$sexo = 		$_POST['sexo'];
+			$tipodoc = 		$_POST['tipodoc'];
+			$documento = 	$_POST['documento'];
+			$fechaexp = 	date('Y-m-d');
+			$fechaven = 	date('Y-m-d', strtotime("+15 Years"));
 			$nacionalidad = $_POST['nacionalidad'];
-			$provincia = 	$_POST['provincia'];
 			$domicilio = 	$_POST['domicilio'];
-			$fec_expedicion = date('Y-m-d');
-			$fec_vencimiento = date('Y-m-d', strtotime("+15 Years"));
+			date_date_set($fechalugar, $_POST['año'], $_POST['mes'], $_POST['dia']);
+			$provincia = 	$_POST['provincia'];			
 			$donante = 		$_POST['donante'];
-			$tramite = 		$_POST['tramite'];
-			$conn = new PDO('mysql:host=localhost;dbname=registros','root','udc');
-			$sql = "INSERT INTO usuarios (apellido, nombre, dni, nacimiento, sexo, nacionalidad, provincia, domicilio, fecha_expedicion, fecha_vencimiento, donante, num_tramite)
-					values (:apellido,:nombre , :dni, :nacimiento, :sexo, :nacionalidad, :provincia, :domicilio, :fecha_expedicion, :fecha_vencimiento, :donante, :num_tramite)";
+			$nrotramite = 	$_POST['nrotramite'];
+			$foto = 		$_POST['foto'];			
+			$firma = 		$_POST['firma'];
+			$huella = 		$_POST['huella'];
+			
+			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
+			$sql = "INSERT INTO personas (nombre, apellido, sexo, tipodoc, documento, fechaexp, fechaven, nacionalidad, domicilio, fechalugar, provincia, donante, nrotramite, foto, firma, huella)
+					values (:nombre, :apellido, :sexo, :tipodoc, :documento, :fechaexp, :fechaven, :nacionalidad, :domicilio, :fechalugar, :provincia, :donante, :nrotramite, :foto, :firma, :huella)";
 			$stmt = $conn->prepare($sql);
-			$stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
 			$stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-			$stmt->bindParam(':dni', $dni, PDO::PARAM_STR);
-			$stmt->bindParam(':nacimiento', $fecha_nacim, PDO::PARAM_STR);
+			$stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
 			$stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+			$stmt->bindParam(':tipodoc', $tipodoc, PDO::PARAM_STR);
+			$stmt->bindParam(':documento', $documento, PDO::PARAM_STR);
+			$stmt->bindParam(':fechaexp', $fechaexp, PDO::PARAM_STR);
+			$stmt->bindParam(':fechaven', $fechaven, PDO::PARAM_STR);
 			$stmt->bindParam(':nacionalidad', $nacionalidad, PDO::PARAM_STR);
-			$stmt->bindParam(':provincia', $provincia, PDO::PARAM_STR);
 			$stmt->bindParam(':domicilio', $domicilio, PDO::PARAM_STR);
-			$stmt->bindParam(':fecha_expedicion', $fec_expedicion, PDO::PARAM_STR);
-			$stmt->bindParam(':fecha_vencimiento', $fec_vencimiento, PDO::PARAM_STR);
+			$stmt->bindParam(':fechalugar', $fechalugar, PDO::PARAM_STR);
+			$stmt->bindParam(':provincia', $provincia, PDO::PARAM_STR);
 			$stmt->bindParam(':donante', $donante, PDO::PARAM_STR);
-			$stmt->bindParam(':num_tramite', $tramite, PDO::PARAM_STR);
+			$stmt->bindParam(':nrotramite', $nrotramite, PDO::PARAM_STR);
+			$stmt->bindParam(':foto', $foto, PDO::PARAM_STR);
+			$stmt->bindParam(':firma', $firma, PDO::PARAM_STR);
+			$stmt->bindParam(':huella', $huella, PDO::PARAM_STR);
 			$stmt->execute();
 			if($stmt->rowCount() == 1)
 			{		
-				header("Location: ok.php");
+				header("Location: ../vista/index.php");
 			}
 			
-		}*/
-	
+		}
+		
 	//verifica acciones por metodo get/////////////////////////////////////////////////////
 	if($_SERVER['REQUEST_METHOD'] == 'GET')
 	{
 		$action1 = $_GET['action'];
-		if($action == 'index')
-		{
-			require("index.php");
-		}
+		
 		if($action1 == 'salir')
 		{
 			$_SESSION = array();
 			
 			session_destroy();
-			header("Location: index.php");
+			header("Location: ../vista/index.php");
+			
+			die();
+		}
+		
+		if($action1 == 'buscar')
+		{
+			$_SESSION = array();
+			
+			session_destroy();
+			header("Location: ../vista/index.php");
 			
 			die();
 		}

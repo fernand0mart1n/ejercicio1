@@ -98,7 +98,10 @@ include "../controlador/conexionbbdd.php";
 	            <li class="divider"></li>
 	            <li><a href="info.php">Mi información</a></li>
 	            <li class="divider"></li>
-	            <li><a href="salir">Salir</a></li>
+	            <form method="get" role="form" action="../controlador/conexionbbdd.php">
+	            <input id="action1" type="hidden" name="action1" value="salir"/>
+	            <li><a >Salir</a></li>
+	            </form>
 	          </ul>
 	        </li>
 	      <?php }; ?>

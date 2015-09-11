@@ -25,6 +25,7 @@ $fechaven = isset($_POST['fechaven']) ? $_POST['fechaven'] : null;
 $nacionalidad = isset($_POST['nacionalidad']) ? $_POST['nacionalidad'] : null;
 $domicilio = isset($_POST['domicilio']) ? $_POST['domicilio'] : null;
 $fechalugar = isset($_POST['fechalugar']) ? $_POST['fechalugar'] : null;
+$provincia = isset($_POST['provincia']) ? $_POST['provincia'] : null;
 $donante = isset($_POST['donante']) ? $_POST['donante'] : null;
 $nrotramite = isset($_POST['nrotramite']) ? $_POST['nrotramite'] : null;
 $foto = isset($_POST['foto']) ? $_POST['foto'] : null;
@@ -57,11 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errores[] = 'El documento es incorrecto.';
    }
    
-	    if (!validarFechas($fechaexp) && $fechaven > fechaexp){
+	    if ($fechaven < $fechaexp){
 	   $errores[] = 'Fecha de expedición errónea';
    }
    
-      if (!validarFechas($fechaven) && $fechaven < fechaexp){
+      if ($fechaven < $fechaexp){
 	   $errores[] = 'Fecha de vencimiento errónea';
    }
    
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errores[] = 'El domicilio es incorrecto';
    }    
    
-       if (!validarFechas(date($año, $mes, $dia)) && date($año, $mes, $dia) > fechaexp){
+       if (date($año, $mes, $dia) > $fechaexp){
 	   $errores[] = 'Fecha de nacimiento errónea';
    }
    
@@ -88,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errores[] = 'El número de trámite es incorrecto.';
    }
    
-
    //Verifica si ha encontrado errores y de no haber redirige a la página con el mensaje de que pasó la validación.
    if(!$errores){
       header('Location: ok.php');
@@ -122,10 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	      </ul>
-	      <form class="navbar-form navbar-center" role="search">
+	      <form class="navbar-form navbar-center" role="search" method="get">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Búsqueda de registros">
+	          <input type="text" class="form-control" value="<?php $_SESSION['busqueda'];?>" placeholder="Búsqueda de registros">
 	        </div>
+				<input id="action1" type="hidden" name="action1" value="buscar"/>
 	        <button type="submit" class="btn btn-default">Buscar</button>
 	      </form>
 		  	<li class="dropdown navbar-right">
@@ -135,7 +136,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	            <li class="divider"></li>
 	            <li><a href="info.php">Mi información</a></li>
 	            <li class="divider"></li>
-	            <li><a href="salir">Salir</a></li>
+	            <form method="get" role="form" action="../controlador/conexionbbdd.php">
+	            <input id="action1" type="hidden" name="action1" value="salir"/>
+	            <li><a >Salir</a></li>
+	            </form>
 	          </ul>
 	        </li>
 	    </div>
@@ -168,12 +172,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		   				<div class="col-lg-8">
 		   				 	<div class="radio">
 		  					  	<label>
-									<input type="radio" name="sex" id="sex" value="M" required> Masculino 
+									<input type="radio" name="sexo" id="sexo" value="M" required> Masculino 
 								</label>
 		    				</div>
 		    				<div class="radio"> 
 		    					<label>
-									<input type="radio" name="sex" id="sex" value="F"> Femenino
+									<input type="radio" name="sexo" id="sexo" value="F"> Femenino
 								</label>
 		    				</div>
 		  				</div>  
@@ -196,23 +200,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		   				</div>
 		  			</div>
 		  			<div class="form-group">
-		   				<label for="fecha_exp" class="col-lg-3 control-label">Fecha expedición</label>
+		   				<label for="fechaexp" class="col-lg-3 control-label">Fecha expedición</label>
 		    			<div class="col-lg-8">
 							<input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" disabled>
-							<input type="hidden" class="form-control" name="exp" id="exp" value="<?php date('Y-m-d'); ?>">
+							<input type="hidden" class="form-control" name="fechaexp" id="fechaexp" value="<?php date('Y-m-d'); ?>">
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
-		    			<label for="fecha_ven" class="col-lg-3 control-label">Fecha vencimiento</label>
+		    			<label for="fechaven" class="col-lg-3 control-label">Fecha vencimiento</label>
 		    			<div class="col-lg-8">
 							<input type="date" class="form-control" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
-							<input type="hidden" class="form-control" name="ven" id="ven" value="<?php date('Y-m-d', strtotime("+15 Years")); ?>">
+							<input type="hidden" class="form-control" name="fechaven" id="fechaven" value="<?php date('Y-m-d', strtotime("+15 Years")); ?>">
 		    			</div>
 		  			</div>
 					<div class="form-group">
 					    <label for="nacionalidad" class="col-lg-3 control-label">Nacionalidad</label>
 					    <div class="col-lg-8">
-							<select class="form-control" name="nac" id="nac" onchange="<?php if($nac != "Argentina"){ $provincia = "Extranjero"; }?>" required>
+							<select class="form-control" name="nacionalidad" id="nacionalidad" onchange="<?php if($nac != "Argentina"){ $provincia = "Extranjero"; }?>" required>
 								<option value="">Seleccione su país</option>
 							<?php foreach ($paises as $pais){?>
 								<option value="<?php echo $pais;?>"><?php echo $pais;?></option>
@@ -266,20 +270,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				    	<div class="col-lg-8">
 				    		<div class="radio">
 				    			<label>
-									<input type="radio" name="don" id="donsi" value="si" required> Si 
+									<input type="radio" name="donante" id="donante" value="si" required> Si 
 								</label>
 				    		</div>
 				    		<div class="radio"> 
 				    			<label>
-									<input type="radio" name="don" id="donno" value="no"> No
+									<input type="radio" name="donante" id="donante" value="no"> No
 								</label>
 				    		</div>
 				  		</div>  
 				    </div>
 		  			<div class="form-group">
-		    			<label for="tramite" class="col-lg-3 control-label">Número de trámite</label>
+		    			<label for="nrotramite" class="col-lg-3 control-label">Número de trámite</label>
 		   				<div class="col-lg-8">
-							<input type="text" class="form-control" title="Debe ingresar el número de trámite" pattern="[0-9]{1,16}" name="tramite" id="tramite" placeholder="Número de trámite" required>
+							<input type="text" class="form-control" title="Debe ingresar el número de trámite" pattern="[0-9]{1,16}" name="nrotramite" id="nrotramite" placeholder="Número de trámite" required>
 		    			</div>
 		  			</div>
 		   			<div class="form-group">
