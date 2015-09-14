@@ -7,6 +7,14 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
+	$request_method = strtoupper(getenv('REQUEST_METHOD'));
+	$http_methods = array('GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS');
+
+	if( ! in_array($request_method, $http_methods))
+	{
+		die('invalid request');
+	}
+	
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		$action = $_POST['action'];
@@ -37,6 +45,7 @@ if(!isset($_SESSION)){
 		
 		if($action == 'insert')
 		{
+			
 			$nombre = 		$_POST['nombre'];
 			$apellido = 	$_POST['apellido'];
 			$sexo = 		$_POST['sexo'];
@@ -46,7 +55,7 @@ if(!isset($_SESSION)){
 			$fechaven = 	date('Y-m-d', strtotime("+15 Years"));
 			$nacionalidad = $_POST['nacionalidad'];
 			$domicilio = 	$_POST['domicilio'];
-			date_date_set($fechalugar, $_POST['año'], $_POST['mes'], $_POST['dia']);
+			$fechalugar =	$_POST['fechalugar'];
 			$provincia = 	$_POST['provincia'];			
 			$donante = 		$_POST['donante'];
 			$nrotramite = 	$_POST['nrotramite'];
@@ -78,11 +87,11 @@ if(!isset($_SESSION)){
 			if($stmt->rowCount() == 1)
 			{		
 				header("Location: ../vista/index.php");
+				die();
 			}
 			
 		}
 		
-	//verifica acciones por metodo get/////////////////////////////////////////////////////
 	if($_SERVER['REQUEST_METHOD'] == 'GET')
 	{
 		$action1 = $_GET['action'];
@@ -97,6 +106,7 @@ if(!isset($_SESSION)){
 			die();
 		}
 		
+		
 		if($action1 == 'buscar')
 		{
 			$_SESSION = array();
@@ -105,6 +115,40 @@ if(!isset($_SESSION)){
 			header("Location: ../vista/index.php");
 			
 			die();
+		}
+		
+		if($action1 == 'misdatos')
+		{
+			
+			$nombreparabusqueda = $_SESSION['user'];
+			
+			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
+			$sql = "SELECT nombre, apellido, sexo, tipodoc, documento, fechaexp, fechaven, nacionalidad, domicilio, fechalugar, provincia, donante, nrotramite, foto, firma, huella FROM personas 
+			WHERE personas_id = :nombreparabusqueda;" ;
+			$stmt = $conn->prepare($sql);
+			$stmt->execute();
+			if($stmt->rowCount() == 1)
+			{		
+				header("Location: ../vista/info.php");
+				die();
+			}
+		}
+		
+		if($action1 == 'busqueda')
+		{
+			
+			$nombreparabusqueda = $_SESSION['busqueda'];
+			
+			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
+			$sql = "SELECT nombre, apellido, documento, nacionalidad, foto FROM personas 
+			WHERE nombre = :nombreparabusqueda OR apellido = :nombreparabusqueda;" ;
+			$stmt = $conn->prepare($sql);
+			$stmt->execute();
+			if($stmt->rowCount() == 1)
+			{		
+				header("Location: ../vista/listado.php");
+				die();
+			}
 		}
 	}
 }

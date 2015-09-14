@@ -8,10 +8,6 @@
 
 session_start();
 
-if(!isset($_SESSION['user'])){
-	header('Location: index.php');
-}
-
 include "../controlador/conexionbbdd.php";
 require_once '../modelo/datos.php';
 
@@ -108,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	</head>
 	<body>
 	<?php if(isset($_SESSION['user'])){?>
-		<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -117,14 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="">Valdesoft</a>
+	      <a class="navbar-brand" href="index.php">Valdesoft</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	      </ul>
 	      <form class="navbar-form navbar-center" role="search" method="get">
 	        <div class="form-group">
-	          <input type="text" class="form-control" value="<?php $_SESSION['busqueda'];?>" placeholder="Búsqueda de registros">
+	          <input type="text" class="form-control" placeholder="Búsqueda de registros">
 	        </div>
 				<input id="action1" type="hidden" name="action1" value="buscar"/>
 	        <button type="submit" class="btn btn-default">Buscar</button>
@@ -137,8 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	            <li><a href="info.php">Mi información</a></li>
 	            <li class="divider"></li>
 	            <form method="get" role="form" action="../controlador/conexionbbdd.php">
-	            <input id="action1" type="hidden" name="action1" value="salir"/>
-	            <li><a >Salir</a></li>
+	            <input id="action1" class="submit" type="hidden" name="action1" value="salir"/>
+	            <li><a href="">Salir</a></li>
 	            </form>
 	          </ul>
 	        </li>
@@ -231,30 +227,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				    	</div>
 				  	</div>
 		  			<div class="form-group">
-		    			<label for="fecha_lugar" class="col-lg-3 control-label">Fecha y lugar de nacimiento:</label>
+		    			<label for="fechalugar" class="col-lg-3 control-label">Fecha y lugar de nacimiento:</label>
 		    			<div class="col-lg-2">
-							<select class="form-control" name="dia" id="dia" required>
-								<option value="">Día</option>
-								<?php for($i = 1; $i < 32; $i++){?>
-									<option value="<?php echo $i;?>"><?php echo $i;?></option>
-								<?php };?>
-							</select>
-						</div>
-						<div class="col-lg-2">
-							<select class="form-control" name="mes" id="mes" required>
-								<option value="">Mes</option>
-								<?php for($i = 1; $i < 13; $i++){?>
-									<option value="<?php echo $i;?>"><?php echo $i;?></option>
-								<?php };?>
-							</select>
-						</div>
-						<div class="col-lg-2">
-							<select class="form-control" name="año" id="año" required>
-								<option value="">Año</option>
-								<?php for($i = 2015; $i >= 1900; $i--){?>
-									<option value="<?php echo $i;?>"><?php echo $i;?></option>
-								<?php };?>
-							</select>
+							<input type="date" class="form-control" title="Debe ingresar su fecha de nacimiento" maxlength="12" name="fechalugar" id="fechalugar" placeholder="Fecha de nacimiento" required>							
 						</div>
 						<div class="col-lg-2">
 							<select class="form-control" name="provincia" id="provincia" required>

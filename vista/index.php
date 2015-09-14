@@ -8,7 +8,7 @@ include "../controlador/conexionbbdd.php";
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<script type="text/javascript" src="../lib/js/chiches.js"></script>
 	<script type="text/javascript" src="../lib/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
@@ -57,16 +57,16 @@ include "../controlador/conexionbbdd.php";
 	    </div>
 	  </div>
 	</div>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 	        <span class="sr-only">Toggle navigation</span>
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="">Valdesoft</a>
+	      <a class="navbar-brand" href="index.php">Valdesoft</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
@@ -96,12 +96,9 @@ include "../controlador/conexionbbdd.php";
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="ejercicio.php">Registrar persona</a></li>
 	            <li class="divider"></li>
-	            <li><a href="info.php">Mi información</a></li>
+	            <li><a href="../controlador/conexionbbdd.php?action=misdatos">Mi información</a></li>
 	            <li class="divider"></li>
-	            <form method="get" role="form" action="../controlador/conexionbbdd.php">
-	            <input id="action1" type="hidden" name="action1" value="salir"/>
-	            <li><a >Salir</a></li>
-	            </form>
+	            <li><a href="../controlador/conexionbbdd.php?action=salir">Salir</a></li>
 	          </ul>
 	        </li>
 	      <?php }; ?>
