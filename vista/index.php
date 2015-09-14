@@ -79,11 +79,13 @@ include "../controlador/conexionbbdd.php";
 	        <button type="submit" class="btn btn-default" title="Para realizar búsquedas debe iniciar sesión" disabled>Buscar</button>
 	      </form>
 	      <?php } else {?>
-	      <form class="navbar-form navbar-center" role="search">
+	      <form class="navbar-form navbar-center" action="../controlador/conexionbbdd.php" role="search" method="get">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Búsqueda de registros">
+	          <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Búsqueda de registros">
 	        </div>
+				<input id="action1" type="hidden" name="action1" value="buscar"/>
 	        <button type="submit" class="btn btn-default">Buscar</button>
+	        <a href="listadotodos.php"><button type="button" class="btn btn-default">Ver todos los registros</button></a>
 	      </form>
 	      <?php }; ?>
 	      <?php if(!isset($_SESSION['user'])){?>

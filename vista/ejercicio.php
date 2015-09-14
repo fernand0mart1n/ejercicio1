@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errores[] = 'El domicilio es incorrecto';
    }    
    
-       if (date_date_set($fechaexp, $año, $mes, $dia) > $fechaexp){
+       if (fechalugar > $fechaexp){
 	   $errores[] = 'Fecha de nacimiento errónea';
    }
    
@@ -86,10 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    }
    
    //Verifica si ha encontrado errores y de no haber redirige a la página con el mensaje de que pasó la validación.
-   if(!$errores){
-      require('ok.php');
-      exit;
-   }
+   require('ok.php');
+   exit;
 }
 
 ?>
@@ -118,12 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	      </ul>
-	      <form class="navbar-form navbar-center" role="search" method="get">
+	      <form class="navbar-form navbar-center" action="../controlador/conexionbbdd.php" role="search" method="get">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Búsqueda de registros">
+	          <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Búsqueda de registros">
 	        </div>
 				<input id="action1" type="hidden" name="action1" value="buscar"/>
 	        <button type="submit" class="btn btn-default">Buscar</button>
+	        <a href="listadotodos.php"><button type="button" class="btn btn-default">Ver todos los registros</button></a>
 	      </form>
 		  	<li class="dropdown navbar-right">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['user'];?><span class="caret"></span></a>
@@ -134,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	            <li class="divider"></li>
 	            <form method="get" role="form" action="../controlador/conexionbbdd.php">
 	            <input id="action1" class="submit" type="hidden" name="action1" value="salir"/>
-	            <li><a href="">Salir</a></li>
+	            <li><a href="../controlador/conexionbbdd.php?action=salir">Salir</a></li>
 	            </form>
 	          </ul>
 	        </li>
@@ -198,15 +197,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		  			<div class="form-group">
 		   				<label for="fechaexp" class="col-lg-3 control-label">Fecha expedición</label>
 		    			<div class="col-lg-8">
-							<input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" disabled>
-							<input type="hidden" class="form-control" name="fechaexp" id="fechaexp" value="<?php date('Y-m-d'); ?>">
+							<input type="date" class="form-control" name="fechaexp" id="fechaexp" value="<?php echo date('Y-m-d'); ?>" readonly="readonly">
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 		    			<label for="fechaven" class="col-lg-3 control-label">Fecha vencimiento</label>
 		    			<div class="col-lg-8">
-							<input type="date" class="form-control" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" disabled>
-							<input type="hidden" class="form-control" name="fechaven" id="fechaven" value="<?php date('Y-m-d', strtotime("+15 Years")); ?>">
+							<input type="date" class="form-control" name="fechaven" id="fechaven" value="<?php echo date('Y-m-d', strtotime("+15 Years")); ?>" readonly="readonly">
 		    			</div>
 		  			</div>
 					<div class="form-group">

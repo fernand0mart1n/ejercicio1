@@ -46,8 +46,8 @@ if(!isset($_SESSION)){
 		if($action == 'insert')
 		{
 			
-			$nombre = 		$_POST['nombre'];
-			$apellido = 	$_POST['apellido'];
+			strtolower($nombre = $_POST['nombre']);
+			strtolower($apellido = $_POST['apellido']);
 			$sexo = 		$_POST['sexo'];
 			$tipodoc = 		$_POST['tipodoc'];
 			$documento = 	$_POST['documento'];
@@ -106,17 +106,6 @@ if(!isset($_SESSION)){
 			die();
 		}
 		
-		
-		if($action1 == 'buscar')
-		{
-			$_SESSION = array();
-			
-			session_destroy();
-			header("Location: ../vista/index.php");
-			
-			die();
-		}
-		
 		if($action1 == 'misdatos')
 		{
 			
@@ -134,16 +123,17 @@ if(!isset($_SESSION)){
 			}
 		}
 		
-		if($action1 == 'busqueda')
+		if($action1 == 'buscar')
 		{
 			
-			$nombreparabusqueda = $_SESSION['busqueda'];
+			strtolower($busqueda = $_SESSION['busqueda']);
 			
 			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
 			$sql = "SELECT nombre, apellido, documento, nacionalidad, foto FROM personas 
-			WHERE nombre = :nombreparabusqueda OR apellido = :nombreparabusqueda;" ;
+			WHERE nombre = :busqueda OR apellido = :busqueda;" ;
 			$stmt = $conn->prepare($sql);
 			$stmt->execute();
+			
 			if($stmt->rowCount() == 1)
 			{		
 				header("Location: ../vista/listado.php");
