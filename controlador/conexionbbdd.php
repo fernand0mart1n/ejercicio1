@@ -126,7 +126,7 @@ if(!isset($_SESSION)){
 		
 		if($action1 == 'buscar')
 		{
-			$busqueda = $_SESSION['busqueda'];
+			$busqueda = $_GET['busqueda'];
 			
 			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
 			$sql = "SELECT nombre, apellido, documento, nacionalidad, foto FROM personas 
@@ -135,7 +135,7 @@ if(!isset($_SESSION)){
             $stmt->bindParam(':busqueda', $busqueda, PDO::PARAM_STR);
 			$stmt->execute();
 			
-			if($stmt->rowCount() == 1)
+			if($stmt->rowCount() >= 1)
 			{		
 				header("Location: ../vista/listado.php");
 				die();
