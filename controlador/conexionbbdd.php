@@ -7,13 +7,13 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
-	/*$request_method = strtoupper(getenv('REQUEST_METHOD'));
+	$request_method = strtoupper(getenv('REQUEST_METHOD'));
 	$http_methods = array('GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS');
 
 	if( ! in_array($request_method, $http_methods))
 	{
 		die('invalid request');
-	}*/
+	}
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{

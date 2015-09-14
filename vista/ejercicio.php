@@ -1,11 +1,5 @@
 <?php
 
-/*
-
-- Si el formulario es válido, mostrar una nueva página con los datos ingresados.
-
-*/
-
 session_start();
 
 include "../controlador/conexionbbdd.php";
