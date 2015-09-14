@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 
 if(!isset($_SESSION)){
@@ -91,10 +91,10 @@ if(!isset($_SESSION)){
 			}
 			
 		}
-		
+        }
 	if($_SERVER['REQUEST_METHOD'] == 'GET')
 	{
-		$action1 = $_GET['action'];
+		$action1 = isset($_GET['action']) ? $_GET['action'] : '';
 		
 		if($action1 == 'salir')
 		{
@@ -109,12 +109,28 @@ if(!isset($_SESSION)){
 		if($action1 == 'misdatos')
 		{
 			
-			$nombreparabusqueda = $_SESSION['user'];
+			$nombreparabusqueda = $_SESSION['id'];
 			
 			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
 			$sql = "SELECT nombre, apellido, sexo, tipodoc, documento, fechaexp, fechaven, nacionalidad, domicilio, fechalugar, provincia, donante, nrotramite, foto, firma, huella FROM personas 
 			WHERE personas_id = :nombreparabusqueda;" ;
 			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+			$stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+			$stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+			$stmt->bindParam(':tipodoc', $tipodoc, PDO::PARAM_STR);
+			$stmt->bindParam(':documento', $documento, PDO::PARAM_STR);
+			$stmt->bindParam(':fechaexp', $fechaexp, PDO::PARAM_STR);
+			$stmt->bindParam(':fechaven', $fechaven, PDO::PARAM_STR);
+			$stmt->bindParam(':nacionalidad', $nacionalidad, PDO::PARAM_STR);
+			$stmt->bindParam(':domicilio', $domicilio, PDO::PARAM_STR);
+			$stmt->bindParam(':fechalugar', $fechalugar, PDO::PARAM_STR);
+			$stmt->bindParam(':provincia', $provincia, PDO::PARAM_STR);
+			$stmt->bindParam(':donante', $donante, PDO::PARAM_STR);
+			$stmt->bindParam(':nrotramite', $nrotramite, PDO::PARAM_STR);
+			$stmt->bindParam(':foto', $foto, PDO::PARAM_STR);
+			$stmt->bindParam(':firma', $firma, PDO::PARAM_STR);
+			$stmt->bindParam(':huella', $huella, PDO::PARAM_STR);
 			$stmt->execute();
 			if($stmt->rowCount() == 1)
 			{		
@@ -125,13 +141,17 @@ if(!isset($_SESSION)){
 		
 		if($action1 == 'buscar')
 		{
-			
-			strtolower($busqueda = $_SESSION['busqueda']);
+			$busqueda = $_SESSION['busqueda'];
 			
 			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
 			$sql = "SELECT nombre, apellido, documento, nacionalidad, foto FROM personas 
 			WHERE nombre = :busqueda OR apellido = :busqueda;" ;
 			$stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+			$stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                        $stmt->bindParam(':documento', $documento, PDO::PARAM_STR);
+			$stmt->bindParam(':nacionalidad', $nacionalidad, PDO::PARAM_STR);
+                        $stmt->bindParam(':foto', $foto, PDO::PARAM_STR);
 			$stmt->execute();
 			
 			if($stmt->rowCount() == 1)
@@ -141,4 +161,4 @@ if(!isset($_SESSION)){
 			}
 		}
 	}
-}
+

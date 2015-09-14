@@ -83,7 +83,7 @@ include "../controlador/conexionbbdd.php";
 	        <div class="form-group">
 	          <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Búsqueda de registros">
 	        </div>
-				<input id="action1" type="hidden" name="action1" value="buscar"/>
+				<input id="action" type="hidden" name="action" value="buscar"/>
 	        <button type="submit" class="btn btn-default">Buscar</button>
 	        <a href="listadotodos.php"><button type="button" class="btn btn-default">Ver todos los registros</button></a>
 	      </form>
