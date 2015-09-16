@@ -72,6 +72,8 @@ session_start();
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="ejercicio.php">Registrar persona</a></li>
 	            <li class="divider"></li>
+                    <li><a href="busquedaweb.php">Mas opciones de búsqueda</a></li>
+                    <li class="divide"></li>
 	            <li><a href="../controlador/conexionbbdd.php?action=misdatos">Mi información</a></li>
 	            <li class="divider"></li>
 	            <li><a href="../controlador/conexionbbdd.php?action=salir">Salir</a></li>

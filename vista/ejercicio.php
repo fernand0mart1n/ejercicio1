@@ -123,6 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="ejercicio.php">Registrar persona</a></li>
 	            <li class="divider"></li>
+                    <li><a href="busquedaweb.php">Mas opciones de búsqueda</a></li>
+                    <li class="divider"></li>
 	            <li><a href="info.php">Mi información</a></li>
 	            <li class="divider"></li>
 	            <form method="get" role="form" action="../controlador/conexionbbdd.php">
