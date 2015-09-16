@@ -132,7 +132,7 @@ if(!isset($_SESSION)){
 			$sql = "SELECT nombre, apellido, documento, nacionalidad, foto FROM personas 
 			WHERE nombre = :busqueda OR apellido = :busqueda;" ;
 			$stmt = $conn->prepare($sql);
-            $stmt->bindParam(':busqueda', $busqueda, PDO::PARAM_STR);
+                        $stmt->bindParam(':busqueda', $busqueda, PDO::PARAM_STR);
 			$stmt->execute();
 			
 			if($stmt->rowCount() >= 1)
@@ -141,5 +141,78 @@ if(!isset($_SESSION)){
 				die();
 			}
 		}
+                
+                if($action1 == 'baja')
+                {
+                    $baja = $_GET['baja'];
+                    
+                    $conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
+			$sql = "DELETE FROM personas WHERE personas_id = :baja;";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(':baja', $nombre, PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount() == 1)
+			{		
+				header("Location: ../vista/index.php");
+				die();
+			}
+                }
+                
+                if($action1 == 'modif')
+                {
+                    $baja = $_GET['baja'];
+                    
+                    strtolower($nombre = $_POST['nombre']);
+                    strtolower($apellido = $_POST['apellido']);
+                    $sexo = 		$_POST['sexo'];
+                    $tipodoc = 		$_POST['tipodoc'];
+                    $documento = 	$_POST['documento'];
+                    $fechaexp = 	date('Y-m-d');
+                    $fechaven = 	date('Y-m-d', strtotime("+15 Years"));
+                    $nacionalidad = $_POST['nacionalidad'];
+                    $domicilio = 	$_POST['domicilio'];	
+                    $donante = 		$_POST['donante'];
+                    $nrotramite = 	$_POST['nrotramite'];
+                    $foto = 		$_POST['foto'];			
+                    $firma = 		$_POST['firma'];
+                    $huella = 		$_POST['huella'];
+                    
+                    $conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
+                    $sql = "INSERT INTO personas (nombre, apellido, sexo, tipodoc, documento, fechaexp, fechaven, nacionalidad, domicilio, donante, nrotramite, foto, firma, huella)
+                    values (:nombre, :apellido, :sexo, :tipodoc, :documento, :fechaexp, :fechaven, :nacionalidad, :domicilio, :donante, :nrotramite, :foto, :firma, :huella)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                    $stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                    $stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+                    $stmt->bindParam(':tipodoc', $tipodoc, PDO::PARAM_STR);
+                    $stmt->bindParam(':documento', $documento, PDO::PARAM_STR);
+                    $stmt->bindParam(':fechaexp', $fechaexp, PDO::PARAM_STR);
+                    $stmt->bindParam(':fechaven', $fechaven, PDO::PARAM_STR);
+                    $stmt->bindParam(':nacionalidad', $nacionalidad, PDO::PARAM_STR);
+                    $stmt->bindParam(':domicilio', $domicilio, PDO::PARAM_STR);
+                    $stmt->bindParam(':donante', $donante, PDO::PARAM_STR);
+                    $stmt->bindParam(':nrotramite', $nrotramite, PDO::PARAM_STR);
+                    $stmt->bindParam(':foto', $foto, PDO::PARAM_STR);
+                    $stmt->bindParam(':firma', $firma, PDO::PARAM_STR);
+                    $stmt->bindParam(':huella', $huella, PDO::PARAM_STR);
+                    $stmt->execute();
+                    if($stmt->rowCount() == 1)
+                    {		
+                    	header("Location: ../vista/index.php");
+                    	die();
+                    }
+                    
+                    
+                    $conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
+			$sql = "DELETE FROM personas WHERE personas_id = :baja;";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(':baja', $nombre, PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount() == 1)
+			{		
+				header("Location: ../vista/index.php");
+				die();
+			}
+                }
 	}
 
