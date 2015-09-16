@@ -87,6 +87,8 @@ if(!isset($_SESSION)){
 			if($stmt->rowCount() == 1)
 			{		
 				header("Location: ../vista/index.php");
+                                if( $rows == 1 )
+                                    echo 'Inserción correcta';
 				die();
 			}
 			
@@ -109,7 +111,7 @@ if(!isset($_SESSION)){
 		if($action1 == 'misdatos')
 		{
 			
-			$nombreparabusqueda = $_SESSION['id'];
+			$nombreparabusqueda = $_GET['id'];
 			
 			$conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
 			$sql = "SELECT nombre, apellido, sexo, tipodoc, documento, fechaexp, fechaven, nacionalidad, domicilio, fechalugar, provincia, donante, nrotramite, foto, firma, huella FROM personas 
@@ -120,6 +122,8 @@ if(!isset($_SESSION)){
 			if($stmt->rowCount() == 1)
 			{		
 				header("Location: ../vista/info.php");
+                                while( $datos = $stmt->fetch() )
+                                    echo $datos[0] . '<br/>';
 				die();
 			}
 		}
@@ -138,6 +142,8 @@ if(!isset($_SESSION)){
 			if($stmt->rowCount() >= 1)
 			{		
 				header("Location: ../vista/listado.php");
+                                while( $datos = $stmt->fetch() )
+                                    echo $datos[0] . '<br/>';
 				die();
 			}
 		}
@@ -177,9 +183,11 @@ if(!isset($_SESSION)){
                     $firma = 		$_POST['firma'];
                     $huella = 		$_POST['huella'];
                     
+                    $stmt = $con->prepare('UPDATE personal SET apellidos = :apellidos WHERE nombre = :');
+                    
                     $conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
-                    $sql = "INSERT INTO personas (nombre, apellido, sexo, tipodoc, documento, fechaexp, fechaven, nacionalidad, domicilio, donante, nrotramite, foto, firma, huella)
-                    values (:nombre, :apellido, :sexo, :tipodoc, :documento, :fechaexp, :fechaven, :nacionalidad, :domicilio, :donante, :nrotramite, :foto, :firma, :huella)";
+                    $sql = "UPDATE personas SET nombre = :nombre, apellido = :apellido, sexo = :sexo, tipodoc = :tipodoc, documento = :documento, fechaexp = :fechaexp, fechaven = :fechaven, nacionalidad = :nacionalidad, domicilio = :domicilio, donante = :donante, nrotramite = :nrotramite, foto = :foto, firma = :firma, huella = :huella)
+                    WHERE :id = personas_id";
                     $stmt = $conn->prepare($sql);
                     $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                     $stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
@@ -201,18 +209,6 @@ if(!isset($_SESSION)){
                     	header("Location: ../vista/index.php");
                     	die();
                     }
-                    
-                    
-                    $conn = new PDO('mysql:host=localhost;dbname=personas','root','udc');
-			$sql = "DELETE FROM personas WHERE personas_id = :baja;";
-			$stmt = $conn->prepare($sql);
-			$stmt->bindParam(':baja', $nombre, PDO::PARAM_STR);
-			$stmt->execute();
-			if($stmt->rowCount() == 1)
-			{		
-				header("Location: ../vista/index.php");
-				die();
-			}
+ 
                 }
 	}
-
